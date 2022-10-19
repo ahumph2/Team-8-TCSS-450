@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">UI and Navigation Lab</string>
+
+    <string name="hint_email">Enter your email address</string>
+    <string name="action_sign_in">Sign In</string>
+    <string name="action_next">Next</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_link">Full Post</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_second_home">2nd Home</string>
+    <string name="title_third_home">3rd Home</string>
+    <string name="title_incrementer">Incrementer</string>
+    <string name="title_blogs">Blogs</string>
+
+    <string name="label_home">Welcome Home %1$s!</string>
+    <string name="label_second_home">Welcome to your second home %1$s!</string>
+    <string name="label_third_home">Welcome to your third home %1$s!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="text_blank">Blank Text</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

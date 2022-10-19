@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_graph"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="edu.uw.tcss450.uiandnavigationlab.ui.auth.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_SignInFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="edu.uw.tcss450.uiandnavigationlab.MainActivity"
+        android:label="MainActivity" >
+        <argument
+            android:name="jwt"
+            app:argType="string" />
+    </activity>
+</navigation>
