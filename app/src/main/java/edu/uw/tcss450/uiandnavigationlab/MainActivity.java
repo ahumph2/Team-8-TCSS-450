@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             //TODO open a settings fragment
             Log.d("SETTINGS", "Clicked");
+            Log.e("Testing", "Arsen Testing again");
             return true;
         }
         return super.onOptionsItemSelected(item);
