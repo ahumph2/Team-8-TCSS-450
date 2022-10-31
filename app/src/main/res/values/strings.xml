@@ -8,6 +8,7 @@
     <string name="action_link">Full Post</string>
     <string name="edit_registration_email">Enter valid email</string>
     <string name="edit_registration_first_name">Enter first name</string>
+    <string name="edit_registration_last_name">Enter last name</string>
 
     <string name="title_home">Home</string>
     <string name="title_second_home">2nd Home</string>
@@ -20,6 +21,7 @@
     <string name="label_third_home">Welcome to your third home %1$s!</string>
     <string name="label_registration_email">Email Address:</string>
     <string name="label_registration_first_name">First name:</string>
+    <string name="label_registration_last_name">Last name:</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="text_blank">Blank Text</string>
