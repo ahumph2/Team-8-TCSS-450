@@ -50,4 +50,22 @@
             android:name="blog"
             app:argType="edu.uw.tcss450.uiandnavigationlab.ui.blog.BlogPost" />
     </fragment>
+
+
+
+
+    <fragment
+        android:id="@+id/navigation_weather"
+        android:name="edu.uw.tcss450.uiandnavigationlab.Fragment_weather"
+        android:label="@string/label_weather"
+        tools:layout="@layout/fragment_weather">
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="edu.uw.tcss450.uiandnavigationlab.fragment_chat"
+        android:label="@string/label_chat"
+        tools:layout="@layout/fragment_chat">
+    </fragment>
 </navigation>

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_weather"
+        android:icon="@drawable/ic_weather_black_24dp"
+        android:title="@string/label_weather" />
+
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
-    <item
-        android:id="@+id/navigation_incrementor"
-        android:icon="@drawable/ic_incrementor_black_24dp"
-        android:title="@string/title_incrementer" />
+
 
     <item
-        android:id="@+id/navigation_blogs"
-        android:icon="@drawable/ic_blog_black_24dp"
-        android:title="@string/title_blogs" />
+        android:id="@+id/navigation_chat"
+        android:icon="@drawable/ic_chat_black_24"
+        android:title="@string/label_chat" />
 </menu>
