@@ -17,7 +17,7 @@
     <string name="hint_first_name">Enter your first name</string>
     <string name="hint_last_name">Enter your last name</string>
     <string name="hint_nickname">Enter a nickname</string>
-    <string name="hint_password">Enter password</string>
+    <string name="hint_password_registration">Enter password</string>
     <string name="hint_password_confirm">Re-Enter password</string>
     <string name="action_submit">Submit</string>
 
