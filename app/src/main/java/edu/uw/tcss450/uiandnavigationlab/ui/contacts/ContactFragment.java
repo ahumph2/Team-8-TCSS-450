@@ -1,4 +1,4 @@
-package edu.uw.tcss450.uiandnavigationlab;
+package edu.uw.tcss450.uiandnavigationlab.ui.contacts;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import edu.uw.tcss450.uiandnavigationlab.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_weather#newInstance} factory method to
+ * Use the {@link ContactFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_weather extends Fragment {
+public class ContactFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class Fragment_weather extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Fragment_weather() {
+    public ContactFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class Fragment_weather extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_weather.
+     * @return A new instance of fragment ContactFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment_weather newInstance(String param1, String param2) {
-        Fragment_weather fragment = new Fragment_weather();
+    public static ContactFragment newInstance(String param1, String param2) {
+        ContactFragment fragment = new ContactFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class Fragment_weather extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weather, container, false);
+        return inflater.inflate(R.layout.fragment_contact, container, false);
     }
 }

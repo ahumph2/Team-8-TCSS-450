@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/navigation_weather"
-        android:name="edu.uw.tcss450.uiandnavigationlab.Fragment_weather"
+        android:name="edu.uw.tcss450.uiandnavigationlab.ui.weather.WeatherFragment"
         android:label="@string/label_weather"
         tools:layout="@layout/fragment_weather">
     </fragment>
@@ -64,8 +64,17 @@
 
     <fragment
         android:id="@+id/navigation_chat"
-        android:name="edu.uw.tcss450.uiandnavigationlab.fragment_chat"
+        android:name="edu.uw.tcss450.uiandnavigationlab.ui.chat.ChatFragment"
         android:label="@string/label_chat"
-        tools:layout="@layout/fragment_chat">
+        tools:layout="@layout/fragment_chat_list">
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/navigation_contacts"
+        android:name="edu.uw.tcss450.uiandnavigationlab.ui.contacts.ContactFragment"
+        android:label="@string/label_contacts"
+        tools:layout="@layout/fragment_contact">
     </fragment>
 </navigation>
