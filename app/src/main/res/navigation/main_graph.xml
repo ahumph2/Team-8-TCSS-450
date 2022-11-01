@@ -66,6 +66,6 @@
         android:id="@+id/navigation_chat"
         android:name="edu.uw.tcss450.uiandnavigationlab.ui.chat.ChatFragment"
         android:label="@string/label_chat"
-        tools:layout="@layout/fragment_chat">
+        tools:layout="@layout/fragment_chat_list">
     </fragment>
 </navigation>
