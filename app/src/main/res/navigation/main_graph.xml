@@ -68,4 +68,13 @@
         android:label="@string/label_chat"
         tools:layout="@layout/fragment_chat_list">
     </fragment>
+
+
+
+    <fragment
+        android:id="@+id/navigation_contacts"
+        android:name="edu.uw.tcss450.uiandnavigationlab.ui.contacts.ContactFragment"
+        android:label="@string/label_contacts"
+        tools:layout="@layout/fragment_contact">
+    </fragment>
 </navigation>

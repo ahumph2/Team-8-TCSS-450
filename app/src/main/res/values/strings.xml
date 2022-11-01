@@ -31,4 +31,5 @@
 
     <string name="label_chat">Chat</string>
     <string name="label_weather">Weather</string>
+    <string name="label_contacts">Contacts</string>
 </resources>
