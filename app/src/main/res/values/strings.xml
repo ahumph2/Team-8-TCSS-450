@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UI and Navigation Lab</string>
+    <string name="app_name">Weather Chat App</string>
 
     <string name="hint_first">First Name</string>
     <string name="hint_last">Last Name</string>

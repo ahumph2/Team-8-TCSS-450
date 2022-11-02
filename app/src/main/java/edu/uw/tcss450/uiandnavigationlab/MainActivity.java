@@ -33,10 +33,9 @@ public class MainActivity extends AppCompatActivity {
         // a longer or shorter time period; change the expiration time when the JWT is
         // created on the web service.
         if(!jwt.isExpired(0)){
-            new ViewModelProvider(
-                    this,
-                    new UserInfoViewModel.UserInfoViewModelFactory(jwt))
-                    .get(UserInfoViewModel.class);
+            new ViewModelProvider(this,
+                    new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt())
+            ).get(UserInfoViewModel.class);
         } else {
             // In production code, add in your own error handling/flow for when the JWT is expired
             throw new IllegalStateException("JWT is expired!");
@@ -75,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             //TODO open a settings fragment
             Log.d("SETTINGS", "Clicked");
-            Log.e("Testing", "Arsen Testing again");
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -60,25 +60,25 @@ public class SignInFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-/*
+
         binding.buttonToRegister.setOnClickListener(button ->
             Navigation.findNavController(getView()).navigate(
                     SignInFragmentDirections.actionLoginFragmentToRegisterFragment()
             ));
 
- */
+
 
         binding.buttonSignIn.setOnClickListener(this::attemptSignIn);
 
         mSignInModel.addResponseObserver(
                 getViewLifecycleOwner(),
                 this::observeResponse);
-/*
+
         SignInFragmentArgs args = SignInFragmentArgs.fromBundle(getArguments());
         binding.editEmail.setText(args.getEmail().equals("default") ? "" : args.getEmail());
         binding.editPassword.setText(args.getPassword().equals("default") ? "" : args.getPassword());
 
- */
+
     }
 
     private void attemptSignIn(final View button) {
@@ -114,12 +114,12 @@ public class SignInFragment extends Fragment {
      * @param jwt the JSON Web Token supplied by the server
      */
     private void navigateToSuccess(final String email, final String jwt) {
-        /*
+
         Navigation.findNavController(getView())
                 .navigate(SignInFragmentDirections
                         .actionLoginFragmentToMainActivity(email, jwt));
 
-         */
+
     }
 
     /**
