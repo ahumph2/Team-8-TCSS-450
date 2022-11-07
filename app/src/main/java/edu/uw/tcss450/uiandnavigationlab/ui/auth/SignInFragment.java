@@ -68,11 +68,17 @@ public class SignInFragment extends Fragment {
 
 
 
-        binding.buttonSignIn.setOnClickListener(this::attemptSignIn);
+        binding.buttonSignIn.setOnClickListener(button ->{
+                    attemptSignIn(button);
+                    binding.layoutWait.setVisibility(View.VISIBLE);
+        });
 
         mSignInModel.addResponseObserver(
                 getViewLifecycleOwner(),
-                this::observeResponse);
+                response -> {
+                    observeResponse(response);
+                    binding.layoutWait.setVisibility(View.GONE);
+                });
 
         SignInFragmentArgs args = SignInFragmentArgs.fromBundle(getArguments());
         binding.editEmail.setText(args.getEmail().equals("default") ? "" : args.getEmail());

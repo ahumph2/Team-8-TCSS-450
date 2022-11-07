@@ -74,9 +74,15 @@ public class RegistrationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.registrationButtonSubmit.setOnClickListener(this::attemptRegister);
+        binding.registrationButtonSubmit.setOnClickListener(button->{
+            attemptRegister(button);
+            binding.layoutWait.setVisibility(View.VISIBLE);
+        });
         mRegisterModel.addResponseObserver(getViewLifecycleOwner(),
-                this::observeResponse);
+                response->{
+                    observeResponse(response);
+                    binding.layoutWait.setVisibility(View.GONE);
+                });
     }
 
     private void attemptRegister(final View button) {

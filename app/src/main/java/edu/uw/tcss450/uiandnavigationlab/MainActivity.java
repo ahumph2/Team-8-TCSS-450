@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import com.auth0.android.jwt.JWT;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Objects;
+
 import edu.uw.tcss450.uiandnavigationlab.model.UserInfoViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         // Check to see if the web token is still valid or not. To make a JWT expire after
         // a longer or shorter time period; change the expiration time when the JWT is
         // created on the web service.
-        if(!jwt.isExpired(0)){
+        if(Objects.requireNonNull(jwt.getExpiresAt()).after(jwt.getIssuedAt())){
             new ViewModelProvider(this,
                     new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt())
             ).get(UserInfoViewModel.class);
