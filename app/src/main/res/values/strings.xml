@@ -14,12 +14,13 @@
     <string name="action_next">Next</string>
     <string name="action_settings">Settings</string>
     <string name="action_link">Full Post</string>
-    <string name="hint_first_name">Enter your first name</string>
-    <string name="hint_last_name">Enter your last name</string>
-    <string name="hint_nickname">Enter a nickname</string>
-    <string name="hint_password_registration">Enter password</string>
-    <string name="hint_password_confirm">Re-Enter password</string>
-    <string name="action_submit">Submit</string>
+    <string name="hint_registration_first_name">Enter your first name</string>
+    <string name="hint_registration_last_name">Enter your last name</string>
+    <string name="hint_registration_email">Enter your email</string>
+    <string name="hint_registration_nickname">Enter a nickname</string>
+    <string name="hint_registration_password">Enter password</string>
+    <string name="hint_registration_password_confirm">Re-Enter password</string>
+    <string name="action_registration_submit">Submit</string>
 
     <string name="title_home">Home</string>
     <string name="title_second_home">2nd Home</string>
@@ -33,12 +34,6 @@
     <string name="label_third_home">Welcome to your third home %1$s!</string>
     <string name="label_time">The current time is %1$s</string>
     <string name="label_home_message_notification">You currently have %1$s! new messages.</string>
-    <string name="label_registration_email">Email Address:</string>
-    <string name="label_registration_first_name">First name:</string>
-    <string name="label_registration_last_name">Last name:</string>
-    <string name="label_registration_nickname">Nickname:</string>
-    <string name="label_registration_password">Password:</string>
-    <string name="label_registration_password_confirm">Confirm password:</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="text_blank">Blank Text</string>
