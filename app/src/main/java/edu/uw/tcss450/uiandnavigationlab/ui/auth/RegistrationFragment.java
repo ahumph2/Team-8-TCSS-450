@@ -74,10 +74,7 @@ public class RegistrationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.registrationButtonSubmit.setOnClickListener(button->{
-            attemptRegister(button);
-            binding.layoutWait.setVisibility(View.VISIBLE);
-        });
+        binding.registrationButtonSubmit.setOnClickListener(this::attemptRegister);
         mRegisterModel.addResponseObserver(getViewLifecycleOwner(),
                 response->{
                     observeResponse(response);
@@ -129,6 +126,7 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void verifyAuthWithServer() {
+        binding.layoutWait.setVisibility(View.VISIBLE);
         mRegisterModel.connect(
                 binding.registrationEditTextFirstName.getText().toString(),
                 binding.registrationEditTextLastName.getText().toString(),
