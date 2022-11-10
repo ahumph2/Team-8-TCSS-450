@@ -68,17 +68,15 @@ public class SignInFragment extends Fragment {
 
 
 
-        binding.buttonSignIn.setOnClickListener(button ->{
-                    attemptSignIn(button);
-                    binding.layoutWait.setVisibility(View.VISIBLE);
+        binding.buttonSignIn.setOnClickListener(this::attemptSignIn);
+        // Functionality for dev button. Uses a burner dev account to sign in instantly.
+        binding.buttonDevBypass.setOnClickListener(button -> {
+            mSignInModel.connect("dev@email.com", "dev123!");
         });
 
         mSignInModel.addResponseObserver(
                 getViewLifecycleOwner(),
-                response -> {
-                    observeResponse(response);
-                    binding.layoutWait.setVisibility(View.GONE);
-                });
+                this::observeResponse);
 
         SignInFragmentArgs args = SignInFragmentArgs.fromBundle(getArguments());
         binding.editEmail.setText(args.getEmail().equals("default") ? "" : args.getEmail());
@@ -106,7 +104,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void verifyAuthWithServer() {
-
+        binding.layoutWait.setVisibility(View.VISIBLE);
         mSignInModel.connect(
                 binding.editEmail.getText().toString(),
                 binding.editPassword.getText().toString());
@@ -120,7 +118,7 @@ public class SignInFragment extends Fragment {
      * @param jwt the JSON Web Token supplied by the server
      */
     private void navigateToSuccess(final String email, final String jwt) {
-
+        binding.layoutWait.setVisibility(View.GONE);
         Navigation.findNavController(getView())
                 .navigate(SignInFragmentDirections
                         .actionLoginFragmentToMainActivity(email, jwt));

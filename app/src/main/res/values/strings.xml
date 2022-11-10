@@ -31,6 +31,8 @@
     <string name="label_home">Welcome Home %1$s!</string>
     <string name="label_second_home">Welcome to your second home %1$s!</string>
     <string name="label_third_home">Welcome to your third home %1$s!</string>
+    <string name="label_time">The current time is %1$s</string>
+    <string name="label_home_message_notification">You currently have %1$s! new messages.</string>
     <string name="label_registration_email">Email Address:</string>
     <string name="label_registration_first_name">First name:</string>
     <string name="label_registration_last_name">Last name:</string>

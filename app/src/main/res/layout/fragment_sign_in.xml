@@ -59,6 +59,16 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_password" />
 
     <Button
+        android:id="@+id/button_dev_bypass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="160dp"
+        android:text="Bypass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_password" />
+
+    <Button
         android:id="@+id/button_to_register"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"

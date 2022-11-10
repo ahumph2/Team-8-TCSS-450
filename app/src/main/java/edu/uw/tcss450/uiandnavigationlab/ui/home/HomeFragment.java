@@ -16,6 +16,10 @@ import edu.uw.tcss450.uiandnavigationlab.R;
 import edu.uw.tcss450.uiandnavigationlab.databinding.FragmentHomeBinding;
 import edu.uw.tcss450.uiandnavigationlab.model.UserInfoViewModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -45,6 +49,9 @@ public class HomeFragment extends Fragment {
         UserInfoViewModel model = new ViewModelProvider(getActivity())
                 .get(UserInfoViewModel.class);
         binding.textEmail.setText(getString(R.string.label_home, model.getEmail()));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd 'at' HH:mm:ss z", Locale.ENGLISH);
+        String currentDateandTime = sdf.format(new Date());
+        binding.textTime.setText(getString(R.string.label_time, currentDateandTime));
 
         //On button click, navigate to Second Home
         binding.buttonNext.setOnClickListener(button ->
