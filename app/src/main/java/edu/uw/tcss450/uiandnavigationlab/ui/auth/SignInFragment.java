@@ -74,6 +74,7 @@ public class SignInFragment extends Fragment {
             mSignInModel.connect("dev@email.com", "dev123!");
         });
 
+
         mSignInModel.addResponseObserver(
                 getViewLifecycleOwner(),
                 this::observeResponse);
@@ -82,7 +83,6 @@ public class SignInFragment extends Fragment {
         binding.editEmail.setText(args.getEmail().equals("default") ? "" : args.getEmail());
         binding.editPassword.setText(args.getPassword().equals("default") ? "" : args.getPassword());
 
-
     }
 
     private void attemptSignIn(final View button) {
@@ -90,6 +90,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void validateEmail() {
+        Log.d("test", "validating email");
         mEmailValidator.processResult(
                 mEmailValidator.apply(binding.editEmail.getText().toString().trim()),
                 this::validatePassword,
@@ -104,7 +105,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void verifyAuthWithServer() {
-        binding.layoutWait.setVisibility(View.VISIBLE);
+        //binding.layoutWait.setVisibility(View.VISIBLE);
         mSignInModel.connect(
                 binding.editEmail.getText().toString(),
                 binding.editPassword.getText().toString());

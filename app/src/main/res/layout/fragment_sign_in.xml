@@ -5,6 +5,7 @@
     android:id="@+id/layoiut_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/weather_background"
     tools:context=".ui.auth.SignInFragment">
 
     <EditText
@@ -29,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_begin="301dp" />
 
     <EditText
         android:id="@+id/edit_password"
@@ -54,7 +55,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:background="@color/colorAccent"
         android:text="@string/action_sign_in_short"
+        android:textColor="@color/colorOffWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_password" />
 
@@ -76,7 +79,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/action_register_short"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorOffWhite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_password" />
 
