@@ -82,7 +82,7 @@ public class SignInFragment extends Fragment {
         SignInFragmentArgs args = SignInFragmentArgs.fromBundle(getArguments());
         binding.editEmail.setText(args.getEmail().equals("default") ? "" : args.getEmail());
         binding.editPassword.setText(args.getPassword().equals("default") ? "" : args.getPassword());
-
+        binding.layoutWait.setVisibility(View.GONE);
     }
 
     private void attemptSignIn(final View button) {
@@ -105,7 +105,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void verifyAuthWithServer() {
-        //binding.layoutWait.setVisibility(View.VISIBLE);
+        binding.layoutWait.setVisibility(View.VISIBLE);
         mSignInModel.connect(
                 binding.editEmail.getText().toString(),
                 binding.editPassword.getText().toString());
@@ -119,7 +119,6 @@ public class SignInFragment extends Fragment {
      * @param jwt the JSON Web Token supplied by the server
      */
     private void navigateToSuccess(final String email, final String jwt) {
-        binding.layoutWait.setVisibility(View.GONE);
         Navigation.findNavController(getView())
                 .navigate(SignInFragmentDirections
                         .actionLoginFragmentToMainActivity(email, jwt));
