@@ -157,6 +157,7 @@ public class RegistrationFragment extends Fragment {
         if (response.length() > 0) {
             if (response.has("code")) {
                 try {
+                    binding.layoutWait.setVisibility(View.GONE);
                     binding.registrationEditTextEmail.setError(
                             "Error Authenticating: " +
                                     response.getJSONObject("data").getString("message"));
