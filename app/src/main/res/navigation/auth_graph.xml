@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/SignInFragment"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.auth.SignInFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.auth.SignInFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <activity
         android:id="@+id/mainActivity"
-        android:name="edu.uw.tcss450.uiandnavigationlab.MainActivity"
+        android:name="edu.uw.tcss450.tcss450group82022.MainActivity"
         android:label="MainActivity" >
         <argument
             android:name="email"
@@ -38,7 +38,7 @@
     </activity>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.auth.RegistrationFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.auth.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action

@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "edu.uw.tcss450.uiandnavigationlab"
+        applicationId "edu.uw.tcss450.tcss450group82022"
         minSdkVersion 24
         targetSdkVersion 32
         versionCode 1
@@ -30,7 +30,7 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
-    namespace 'edu.uw.tcss450.uiandnavigationlab'
+    namespace 'edu.uw.tcss450.tcss450group82022'
 
 }
 

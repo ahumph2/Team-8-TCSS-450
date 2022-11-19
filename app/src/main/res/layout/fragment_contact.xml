@@ -11,5 +11,5 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     android:orientation="vertical"
-    tools:context="edu.uw.tcss450.uiandnavigationlab.ui.contacts.ContactFragment"
+    tools:context="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactFragment"
     tools:listitem="@layout/fragment_contact_card"/>

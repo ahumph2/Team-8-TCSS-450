@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.home.HomeFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/secondHomeFragment"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.home.SecondHomeFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.home.SecondHomeFragment"
         android:label="@string/title_second_home"
         tools:layout="@layout/fragment_second_home">
         <action
@@ -25,12 +25,12 @@
     </fragment>
     <fragment
         android:id="@+id/thirdHomeFragment"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.home.ThirdHomeFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.home.ThirdHomeFragment"
         android:label="@string/title_third_home"
         tools:layout="@layout/fragment_third_home" />
     <fragment
         android:id="@+id/navigation_blogs"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.blog.BlogListFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.blog.BlogListFragment"
         android:label="@string/title_blogs"
         tools:layout="@layout/fragment_blog_list" >
         <action
@@ -39,12 +39,12 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_incrementor"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.incrementor.IncrementorFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.incrementor.IncrementorFragment"
         android:label="@string/title_incrementer"
         tools:layout="@layout/fragment_incrementor" />
     <fragment
         android:id="@+id/blogPostFragment"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.blog.BlogPostFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.blog.BlogPostFragment"
         android:label="@string/title_blogs" >
         <argument
             android:name="blog"
@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/navigation_weather"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.weather.WeatherFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.weather.WeatherFragment"
         android:label="@string/label_weather"
         tools:layout="@layout/fragment_weather">
     </fragment>
@@ -64,7 +64,7 @@
 
     <fragment
         android:id="@+id/navigation_chat"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.chat.ChatFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.chat.ChatFragment"
         android:label="@string/label_chat"
         tools:layout="@layout/fragment_chat_list">
     </fragment>
@@ -73,7 +73,7 @@
 
     <fragment
         android:id="@+id/navigation_contacts"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.contacts.ContactFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactFragment"
         android:label="@string/label_contacts"
         tools:layout="@layout/fragment_contact">
     </fragment>
