@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import edu.uw.tcss450.tcss450group82022.R;
 import edu.uw.tcss450.tcss450group82022.io.RequestQueueSingleton;
 
 public class SignInViewModel extends AndroidViewModel {
@@ -43,7 +44,7 @@ public class SignInViewModel extends AndroidViewModel {
 
 
     public void connect(final String email, final String password) {
-        String url = "https://team8-tcss450-auth.herokuapp.com/auth";
+        String url = getApplication().getResources().getString(R.string.base_url)+"auth";
 
         Request request = new JsonObjectRequest(
                 Request.Method.GET,

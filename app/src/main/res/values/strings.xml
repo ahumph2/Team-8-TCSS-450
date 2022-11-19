@@ -35,6 +35,8 @@
     <string name="label_time">The current time is %1$s</string>
     <string name="label_home_message_notification">You currently have %1$s! new messages.</string>
 
+    <string name="base_url">https://ahumph2-tcss450-labs-auth.herokuapp.com/</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="text_blank">Blank Text</string>
     <!-- TODO: Remove or change this placeholder text -->
