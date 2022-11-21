@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Added to access units in dps programmatically. -->
+    <dimen name="chat_margin">5dp</dimen>
+    <dimen name="chat_margin_sided">50dp</dimen>
+</resources>

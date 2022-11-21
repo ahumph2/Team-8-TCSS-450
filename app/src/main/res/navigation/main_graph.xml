@@ -29,29 +29,10 @@
         android:label="@string/title_third_home"
         tools:layout="@layout/fragment_third_home" />
     <fragment
-        android:id="@+id/navigation_blogs"
-        android:name="edu.uw.tcss450.tcss450group82022.ui.blog.BlogListFragment"
-        android:label="@string/title_blogs"
-        tools:layout="@layout/fragment_blog_list" >
-        <action
-            android:id="@+id/action_navigation_blogs_to_blogPostFragment"
-            app:destination="@id/blogPostFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/navigation_incrementor"
         android:name="edu.uw.tcss450.tcss450group82022.ui.incrementor.IncrementorFragment"
         android:label="@string/title_incrementer"
         tools:layout="@layout/fragment_incrementor" />
-    <fragment
-        android:id="@+id/blogPostFragment"
-        android:name="edu.uw.tcss450.tcss450group82022.ui.blog.BlogPostFragment"
-        android:label="@string/title_blogs" >
-        <argument
-            android:name="blog"
-            app:argType="edu.uw.tcss450.uiandnavigationlab.ui.blog.BlogPost" />
-    </fragment>
-
-
 
 
     <fragment
