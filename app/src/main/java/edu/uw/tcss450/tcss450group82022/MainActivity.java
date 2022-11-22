@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
             // In production code, add in your own error handling/flow for when the JWT is expired
             throw new IllegalStateException("JWT is expired!");
         }
-
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

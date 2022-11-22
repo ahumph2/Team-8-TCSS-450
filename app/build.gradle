@@ -55,4 +55,5 @@ dependencies {
     implementation 'com.auth0.android:jwtdecode:2.0.0'
     implementation 'com.auth0:java-jwt:3.14.0'
     implementation 'me.pushy:sdk:1.0.82'
+    implementation 'com.google.android.material:material:1.8.0-alpha02'
 }
