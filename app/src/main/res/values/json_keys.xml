@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="keys_json_chats_response">response</string>
+    <string name="keys_json_chats_rowCount">rowCount</string>
+    <string name="keys_json_chats_rows">rows</string>
+    <string name="keys_json_chats_chatId">chatid</string>
+
+
+
+</resources>

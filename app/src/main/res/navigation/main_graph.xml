@@ -44,18 +44,26 @@
 
 
     <fragment
-        android:id="@+id/navigation_chat"
-        android:name="edu.uw.tcss450.tcss450group82022.ui.chat.ChatFragment"
-        android:label="@string/label_chat"
-        tools:layout="@layout/fragment_chat_list">
-    </fragment>
-
-
-
-    <fragment
         android:id="@+id/navigation_contacts"
         android:name="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactFragment"
         android:label="@string/label_contacts"
         tools:layout="@layout/fragment_contact">
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_chats"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.chat.ChatListFragment"
+        android:label="@string/title_chats" >
+        <action
+            android:id="@+id/action_navigation_chats_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.chat.ChatFragment"
+        android:label="@string/title_chats"
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="chat"
+            app:argType="edu.uw.tcss450.tcss450group82022.ui.chat.ChatCard" />
     </fragment>
 </navigation>

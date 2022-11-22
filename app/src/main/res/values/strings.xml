@@ -37,11 +37,10 @@
 
     <string name="base_url">https://team8-tcss450-auth.herokuapp.com/</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="text_blank">Blank Text</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <!--Chat related strings -->
+    <string name="right_arrow">Right arrow to navigate to chat</string>
+    <string name="chat_Id_text_view">ChatID</string>
+    <string name="title_chats">Chats</string>
 
     <string name="label_chat">Chat</string>
     <string name="label_weather">Weather</string>

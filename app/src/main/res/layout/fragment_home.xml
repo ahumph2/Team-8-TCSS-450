@@ -14,7 +14,7 @@
         android:layout_height="67dp"
         android:text="@string/label_home"
         android:textAlignment="center"
-        android:textColor="#0c1e1b"
+        android:textColor="@color/secondaryTextColorFade"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
