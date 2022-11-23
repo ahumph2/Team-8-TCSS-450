@@ -1,4 +1,4 @@
-package edu.uw.tcss450.uiandnavigationlab.ui.weather;
+package edu.uw.tcss450.tcss450group82022.ui.weather;
 
 import android.app.Application;
 import android.util.Log;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.IntFunction;
 
-import edu.uw.tcss450.uiandnavigationlab.R;
+import edu.uw.tcss450.tcss450group82022.R;
 
 
 public class FiveDayViewModel extends AndroidViewModel {

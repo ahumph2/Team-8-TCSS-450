@@ -1,4 +1,4 @@
-package edu.uw.tcss450.uiandnavigationlab.ui.weather;
+package edu.uw.tcss450.tcss450group82022.ui.weather;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,8 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import edu.uw.tcss450.uiandnavigationlab.R;
-import edu.uw.tcss450.uiandnavigationlab.databinding.FragmentFiveDayListBinding;
+import edu.uw.tcss450.tcss450group82022.R;
+import edu.uw.tcss450.tcss450group82022.databinding.FragmentFiveDayListBinding;
 
 /**
  * A simple {@link Fragment} subclass.

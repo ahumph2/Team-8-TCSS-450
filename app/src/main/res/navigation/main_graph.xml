@@ -55,16 +55,16 @@
     </fragment>
     <fragment
         android:id="@+id/locationFragment"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.weather.LocationFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.weather.LocationFragment"
         android:label="LocationFragment" />
     <fragment
         android:id="@+id/twelveHourListFragment"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.weather.TwelveHourListFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.weather.TwelveHourListFragment"
         android:label="fragment_twelve_hour_list"
         tools:layout="@layout/fragment_twelve_hour_list" />
     <fragment
         android:id="@+id/fiveDayListFragment"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.weather.FiveDayListFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.weather.FiveDayListFragment"
         android:label="5 Days Forecast"
         tools:layout="@layout/fragment_twelve_hour_list" />
 

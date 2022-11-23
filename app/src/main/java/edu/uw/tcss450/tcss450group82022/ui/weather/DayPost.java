@@ -1,4 +1,4 @@
-package edu.uw.tcss450.uiandnavigationlab.ui.weather;
+package edu.uw.tcss450.tcss450group82022.ui.weather;
 
 public class DayPost {
 

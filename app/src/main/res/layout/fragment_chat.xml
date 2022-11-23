@@ -55,7 +55,7 @@
             android:layout_marginEnd="8dp"
             android:orientation="vertical"
             app:layoutManager="LinearLayoutManager"
-            tools:context="edu.uw.tcss450.uiandnavigationlab.ui.blog.BlogListFragment"
+            tools:context="edu.uw.tcss450.tcss450group82022.ui.blog.BlogListFragment"
             tools:listitem="@layout/fragment_chat_message"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

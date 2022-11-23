@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("edu.uw.tcss450.uiandnavigationlab", appContext.getPackageName());
+        assertEquals("edu.uw.tcss450.tcss450group82022", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package edu.uw.tcss450.uiandnavigationlab.ui.weather;
+package edu.uw.tcss450.tcss450group82022.ui.weather;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-import edu.uw.tcss450.uiandnavigationlab.R;
+import edu.uw.tcss450.tcss450group82022.R;
 
-import edu.uw.tcss450.uiandnavigationlab.databinding.FragmentDayPostBinding;
+import edu.uw.tcss450.tcss450group82022.databinding.FragmentDayPostBinding;
 
 public class DayRecyclerViewAdapter extends RecyclerView.Adapter<DayRecyclerViewAdapter.DayViewHolder> {
 
@@ -52,7 +52,7 @@ public class DayRecyclerViewAdapter extends RecyclerView.Adapter<DayRecyclerView
         public DayViewHolder(View view) {
             super(view);
             mView = view;
-            binding = edu.uw.tcss450.uiandnavigationlab.databinding.FragmentDayPostBinding.bind(view);
+            binding = edu.uw.tcss450.tcss450group82022.databinding.FragmentDayPostBinding.bind(view);
 
         }
 

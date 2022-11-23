@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_root"
-    android:name="edu.uw.tcss450.uiandnavigationlab.ui.contacts.ContactListFragment"
+    android:name="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/weather_background"
@@ -23,7 +23,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_root"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.contacts.ContactListFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"

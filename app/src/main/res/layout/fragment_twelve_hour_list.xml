@@ -15,6 +15,6 @@
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context="edu.uw.tcss450.uiandnavigationlab.ui.weather.TwelveHourListFragment"
+        tools:context="edu.uw.tcss450.tcss450group82022.ui.weather.TwelveHourListFragment"
         tools:listitem="@layout/fragment_hour_post" />
 </androidx.constraintlayout.widget.ConstraintLayout>

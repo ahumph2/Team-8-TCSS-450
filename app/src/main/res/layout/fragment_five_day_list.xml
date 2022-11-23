@@ -13,6 +13,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layoutManager="LinearLayoutManager"
-        tools:context="edu.uw.tcss450.uiandnavigationlab.ui.weather.FiveDayListFragment"
+        tools:context="edu.uw.tcss450.tcss450group82022.ui.weather.FiveDayListFragment"
         tools:listitem="@layout/fragment_day_post" />
 </androidx.constraintlayout.widget.ConstraintLayout>

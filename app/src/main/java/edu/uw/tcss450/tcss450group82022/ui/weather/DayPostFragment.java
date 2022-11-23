@@ -1,4 +1,4 @@
-package edu.uw.tcss450.uiandnavigationlab.ui.weather;
+package edu.uw.tcss450.tcss450group82022.ui.weather;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import edu.uw.tcss450.uiandnavigationlab.R;
+import edu.uw.tcss450.tcss450group82022.R;
 
 /**
  * A simple {@link Fragment} subclass.

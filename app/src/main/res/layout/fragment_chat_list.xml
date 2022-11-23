@@ -22,7 +22,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_root"
-        android:name="edu.uw.tcss450.uiandnavigationlab.ui.blog.BlogFragment"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.blog.BlogFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context="edu.uw.tcss450.uiandnavigationlab.ui.blog.BlogListFragment"
+        tools:context="edu.uw.tcss450.tcss450group82022.ui.blog.BlogListFragment"
         tools:listitem="@layout/fragment_chat_card" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

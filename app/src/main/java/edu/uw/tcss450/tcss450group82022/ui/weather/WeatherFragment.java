@@ -25,7 +25,7 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import edu.uw.tcss450.uiandnavigationlab.R;
+import edu.uw.tcss450.tcss450group82022.R;
 
 @Metadata(
         mv = {1, 7, 1},
