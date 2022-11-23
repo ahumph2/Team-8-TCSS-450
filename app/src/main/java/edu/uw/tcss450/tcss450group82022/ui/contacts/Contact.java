@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-public class Contact implements Serializable {
+public final class Contact implements Serializable {
     private final int mPrimaryKey;
     private final int mMemberIdA;
     private final int mMemberIdB;
