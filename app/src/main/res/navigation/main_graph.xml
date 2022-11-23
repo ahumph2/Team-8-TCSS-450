@@ -44,10 +44,22 @@
 
 
     <fragment
-        android:id="@+id/navigation_contacts"
+        android:id="@+id/navigation_contact"
         android:name="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactFragment"
         android:label="@string/label_contacts"
         tools:layout="@layout/fragment_contact">
+        <argument
+            android:name="contact"
+            app:argType="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactCard" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_contact_list"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactListFragment"
+        android:label="@string/label_contacts"
+        tools:layout="@layout/fragment_contact_list">
+        <action
+            android:id="@+id/action_navigation_contact_list_to_navigation_contact"
+            app:destination="@id/navigation_contact" />
     </fragment>
     <fragment
         android:id="@+id/navigation_chats"
