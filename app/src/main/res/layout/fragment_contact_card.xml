@@ -35,6 +35,7 @@
             android:layout_height="43dp"
             android:layout_marginStart="3dp"
             android:layout_marginTop="4dp"
+            android:src="@drawable/ic_contact_black_24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars[1]" />

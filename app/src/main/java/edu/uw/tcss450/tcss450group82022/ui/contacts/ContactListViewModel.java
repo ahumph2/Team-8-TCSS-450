@@ -33,7 +33,19 @@ public class ContactListViewModel extends AndroidViewModel {
     public ContactListViewModel(@NonNull Application application) {
         super(application);
         mContactList = new MutableLiveData<>();
+
+        // Using example data for now
         mContactList.setValue(new ArrayList<>());
+        ContactCard exampleOne = new ContactCard.Builder("Arsen").build();
+        ContactCard exampleTwo = new ContactCard.Builder("Ryan").build();
+        ContactCard exampleThree = new ContactCard.Builder("Alex").build();
+        ContactCard exampleFour = new ContactCard.Builder("Eli").build();
+        ContactCard exampleFive = new ContactCard.Builder("Damien").build();
+        mContactList.getValue().add(exampleOne);
+        mContactList.getValue().add(exampleTwo);
+        mContactList.getValue().add(exampleThree);
+        mContactList.getValue().add(exampleFour);
+        mContactList.getValue().add(exampleFive);
     }
     public void addContactListObserver(@NonNull LifecycleOwner owner,
                                     @NonNull Observer<? super List<ContactCard>> observer) {
@@ -78,7 +90,8 @@ public class ContactListViewModel extends AndroidViewModel {
     }
 
     public void connectGet(final String jwt) {
-        String url =
+
+        /*String url =
                 getApplication().getResources().getString(R.string.base_url)+"contacts";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -100,6 +113,6 @@ public class ContactListViewModel extends AndroidViewModel {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         //Instantiate the RequestQueue and add the request to the queue
         Volley.newRequestQueue(getApplication().getApplicationContext())
-                .add(request);
+                .add(request);*/
     }
 }

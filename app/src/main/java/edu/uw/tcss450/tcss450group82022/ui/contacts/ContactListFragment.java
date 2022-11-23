@@ -33,7 +33,7 @@ public class ContactListFragment extends Fragment {
         mModel = new ViewModelProvider(getActivity()).get(ContactListViewModel.class);
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
-        mModel.connectGet(mUserModel.getmJwt());
+        //mModel.connectGet(mUserModel.getmJwt());
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +46,6 @@ public class ContactListFragment extends Fragment {
         FragmentContactListBinding binding = FragmentContactListBinding.bind(getView());
 
         mModel.addContactListObserver(getViewLifecycleOwner(), contactList -> {
-            Log.e("CONTACT", "contactList: " + contactList);
             if (!contactList.isEmpty()) {
                 binding.listRoot.setAdapter(
                         new ContactListRecyclerViewAdapter(contactList)

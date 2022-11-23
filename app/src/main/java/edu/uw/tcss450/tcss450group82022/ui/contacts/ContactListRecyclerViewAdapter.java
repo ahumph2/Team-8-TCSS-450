@@ -67,7 +67,7 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<Contact
                         ContactListFragmentDirections
                                 .actionNavigationContactListToNavigationContact(contactCard));
             });
-            binding.contactName.setText("ContactName:" + contactCard.getContactName());
+            binding.contactName.setText(contactCard.getContactName());
         }
     }
 }
