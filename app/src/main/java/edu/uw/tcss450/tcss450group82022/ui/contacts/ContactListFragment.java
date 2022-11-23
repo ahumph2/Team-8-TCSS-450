@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import edu.uw.tcss450.tcss450group82022.R;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentChatListBinding;
+import edu.uw.tcss450.tcss450group82022.databinding.FragmentContactListBinding;
 import edu.uw.tcss450.tcss450group82022.model.UserInfoViewModel;
 
 /**
@@ -42,7 +43,7 @@ public class ContactListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        FragmentChatListBinding binding = FragmentChatListBinding.bind(getView());
+        FragmentContactListBinding binding = FragmentContactListBinding.bind(getView());
 
         mModel.addContactListObserver(getViewLifecycleOwner(), contactList -> {
             Log.e("CONTACT", "contactList: " + contactList);
@@ -50,7 +51,7 @@ public class ContactListFragment extends Fragment {
                 binding.listRoot.setAdapter(
                         new ContactListRecyclerViewAdapter(contactList)
                 );
-                binding.layoutWait.setVisibility(View.GONE);
+//                binding.layoutWait.setVisibility(View.GONE);
             }
         });
     }
