@@ -42,7 +42,7 @@ public class GeopositionViewModel extends AndroidViewModel {
     }
 
     public void connect(final String latitude, final String longitude){
-        String url = "https://mobileapp-group-backend.herokuapp.com/geoposition";
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=seattle&forecast?id=524901&appid=fe5e828e566e38d0c546d2d533dcc41b";
 
         JSONObject body = new JSONObject();
         try{

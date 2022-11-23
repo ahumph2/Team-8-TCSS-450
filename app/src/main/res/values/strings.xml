@@ -46,7 +46,6 @@
     <string name="item_weather_zipcode">Change by Zip code</string>
     <string name="item_weather_map">Change by location</string>
 
-    <string name="base_url">https://mobileapp-group-backend.herokuapp.com/</string>
     <string name="favor_contact_dialog">This is your favorite person?</string>
     <string name="title_activity_weather">WeatherActivity</string>
 
