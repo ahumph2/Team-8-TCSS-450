@@ -5,6 +5,10 @@
     <string name="keys_json_chats_rows">rows</string>
     <string name="keys_json_chats_chatId">chatid</string>
 
+    <string name="keys_json_contacts_response">response</string>
+    <string name="keys_json_contacts_rowCount">rowCount</string>
+    <string name="keys_json_contacts_rows">rows</string>
+    <string name="keys_json_contacts_contactId">contactid</string>
 
 
 </resources>
