@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "676012295908",
+    "project_id": "earsdd-b4466",
+    "storage_bucket": "earsdd-b4466.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676012295908:android:6f54e79165221e48d5cef1",
+        "android_client_info": {
+          "package_name": "edu.uw.tcss450.uiandnavigationlab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676012295908-f81925l0ob3vji2ju0ujeo8r5q1m4l46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTj-ippl0KPN3d-cWA1yIOxVZbIXn5yss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676012295908-f81925l0ob3vji2ju0ujeo8r5q1m4l46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

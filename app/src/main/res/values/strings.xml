@@ -38,6 +38,22 @@
     <string name="label_registration_password">Password:</string>
     <string name="label_registration_password_confirm">Confirm password:</string>
 
+    <!--Strings for weather-->
+    <string name="textView_weather_current_city">City</string>
+    <string name="textView_weather_current_temperature">Temperature</string>
+    <string name="textView_weather_current_status">Status</string>
+    <string name="item_weather_current_location">Change to current location</string>
+    <string name="item_weather_zipcode">Change by Zip code</string>
+    <string name="item_weather_map">Change by location</string>
+
+    <string name="base_url">https://mobileapp-group-backend.herokuapp.com/</string>
+    <string name="favor_contact_dialog">This is your favorite person?</string>
+    <string name="title_activity_weather">WeatherActivity</string>
+
+
+    <string name="label_location">Confirm location?:</string>
+    <string name="title_activity_maps">Map</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="text_blank">Blank Text</string>
     <!-- TODO: Remove or change this placeholder text -->

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="keys_json_blogs_response">response</string>
+    <string name="keys_json_blogs_data">data</string>
+    <string name="keys_json_blogs_pubdate">pubdate</string>
+    <string name="keys_json_blogs_title">title</string>
+    <string name="keys_json_blogs_teaser">teaser</string>
+    <string name="keys_json_blogs_url">url</string>
+
+    <string name="keys_json_weather_weathertext">WeatherText</string>
+    <string name="keys_json_weather_temperature">Temperature</string>
+    <string name="keys_json_weather_metric">Imperial</string>
+
+    <string name="keys_json_weather_unit">Unit</string>
+
+    <string name="keys_json_weather_date">Date</string>
+    <string name="keys_json_weather_dateTime">DateTime</string>
+    <string name="keys_json_weather_condition">IconPhrase</string>
+    <string name="keys_json_weather_temp">Temperature</string>
+    <string name="keys_json_weather_value">Value</string>
+    <string name="keys_json_weather_min">Minimum</string>
+    <string name="keys_json_weather_max">Max</string>
+    <string name="keys_json_weather_day">Day</string>
+    <string name="keys_json_weather_night">Night</string>
+
+
+
+</resources>
