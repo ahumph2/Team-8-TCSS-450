@@ -56,30 +56,41 @@ public class ChatListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding = FragmentChatListBinding.bind(getView());
+        // Functionality for the add new chat button
         binding.chatAddNew.setOnClickListener(button -> {
+            // Create a new popup dialog. It handles the name of the new chat
+            // as well as submitting the request
            final View newChatPopupView = getLayoutInflater().inflate(R.layout.new_chat_popup_window, null);
            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this.getContext());
            dialogBuilder.setView(newChatPopupView);
            Dialog dialog = dialogBuilder.create();
            dialog.show();
+           // Find the submit button for the dialog
            Button submitButton = newChatPopupView.findViewById(R.id.new_chat_submit_button);
 
+           // When the submit button is clicked
            submitButton.setOnClickListener(innerButton -> {
+               //  Make spinner appear
                binding.layoutWait.setVisibility(View.VISIBLE);
+               // Using the text specified by user, call a post to chats with the new name
                EditText nameText = newChatPopupView.findViewById(R.id.new_chat_name);
                mModel.connectPost(mUserModel.getmJwt(), String.valueOf(nameText.getText()));
+               // Observe the response we get from the POST call
                mModel.addChatIdObserver(getViewLifecycleOwner(), chatId -> {
+                   // Close the popup and get rid of spinner
                    dialog.dismiss();
                    binding.layoutWait.setVisibility(View.GONE);
                    Log.i("CHATID", "ChatId: " + chatId);
+                   // Prevent multiple put calls / add user to new chat
                    if(!Objects.equals(chatId, "")){
                        mModel.connectPut(mUserModel.getmJwt(),chatId);
                    }
+                   // Observe response from put to ensure we have success
                    mModel.addPutResponseObserver(getViewLifecycleOwner(), this::observePutResponse);
                });
            });
         });
-        mModel.addBlogListObserver(getViewLifecycleOwner(), chatList -> {
+        mModel.addChatListObserver(getViewLifecycleOwner(), chatList -> {
             Log.i("CHAT", "chatList: " + chatList);
             if (!chatList.isEmpty()) {
                 binding.listRoot.setAdapter(

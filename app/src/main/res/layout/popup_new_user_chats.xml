@@ -8,13 +8,13 @@
     android:background="@color/iconTransparent">
 
     <TextView
-        android:id="@+id/create_new_chat_label"
+        android:id="@+id/label_add_new_user_chats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="30dp"
-        android:text="Create a new chat room"
+        android:text="Add user to chat room"
         android:textSize="22sp"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/new_chat_submit_button"
+        android:id="@+id/button_submit_new_user_chats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -31,19 +31,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_chat_name" />
+        app:layout_constraintTop_toBottomOf="@+id/text_add_new_chat_email" />
 
     <EditText
-        android:id="@+id/new_chat_name"
+        android:id="@+id/text_add_new_chat_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Chat Room Name"
+        android:hint="Registered User Email"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_new_chat_label" />
+        app:layout_constraintTop_toBottomOf="@+id/label_add_new_user_chats" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

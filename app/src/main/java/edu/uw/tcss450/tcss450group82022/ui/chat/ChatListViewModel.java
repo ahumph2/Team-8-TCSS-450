@@ -41,7 +41,7 @@ public class ChatListViewModel extends AndroidViewModel {
         mPutResponse = new MutableLiveData<>();
         mPutResponse.setValue(new JSONObject());
     }
-    public void addBlogListObserver(@NonNull LifecycleOwner owner,
+    public void addChatListObserver(@NonNull LifecycleOwner owner,
                                     @NonNull Observer<? super List<ChatCard>> observer) {
         mChatList.observe(owner, observer);
     }

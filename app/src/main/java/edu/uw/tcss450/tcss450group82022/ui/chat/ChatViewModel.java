@@ -13,6 +13,7 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,9 +38,13 @@ public class ChatViewModel extends AndroidViewModel {
      */
     private Map<Integer, MutableLiveData<List<ChatMessage>>> mMessages;
 
+    private MutableLiveData<JSONObject> mAddUserResponse;
+
     public ChatViewModel(@NonNull Application application) {
         super(application);
         mMessages = new HashMap<>();
+        mAddUserResponse = new MutableLiveData<>();
+        mAddUserResponse.setValue(new JSONObject());
     }
 
     /**
@@ -52,6 +57,17 @@ public class ChatViewModel extends AndroidViewModel {
                                    @NonNull LifecycleOwner owner,
                                    @NonNull Observer<? super List<ChatMessage>> observer) {
         getOrCreateMapEntry(chatId).observe(owner, observer);
+    }
+
+    /**
+     * Register as an observer to listen to the add user POST Request. Response should
+     * simply be "success":true
+     * @param owner
+     * @param observer
+     */
+    public void addPostResponseObserver(@NonNull LifecycleOwner owner,
+                                       @NonNull Observer<? super JSONObject> observer){
+        mAddUserResponse.observe(owner, observer);
     }
 
     /**
@@ -222,5 +238,38 @@ public class ChatViewModel extends AndroidViewModel {
                     " " +
                     data);
         }
+    }
+
+    public void connectPostAddUser(final String jwt, final String chatId,final String email){
+        String url =
+                getApplication().getResources().getString(R.string.base_url)+"chats/"+chatId;
+        JSONObject body = new JSONObject();
+        try {
+            body.put("email", email);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Request request = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                body,
+                mAddUserResponse::setValue,
+                this::handleError) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                // add headers <key,value>
+                headers.put("Authorization", jwt);
+                return headers;
+            }
+        };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        Volley.newRequestQueue(getApplication().getApplicationContext())
+                .add(request);
+
     }
 }

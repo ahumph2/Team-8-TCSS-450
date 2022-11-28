@@ -1,15 +1,23 @@
 package edu.uw.tcss450.tcss450group82022.ui.chat;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import edu.uw.tcss450.tcss450group82022.R;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentChatBinding;
@@ -68,8 +76,8 @@ public class ChatFragment extends Fragment {
         //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
         //holds.
         rv.setAdapter(new ChatRecyclerViewAdapter(
-                        mChatModel.getMessageListByChatId(mChatId),
-                        mUserModel.getEmail()));
+                mChatModel.getMessageListByChatId(mChatId),
+                mUserModel.getEmail()));
 
 
         //When the user scrolls to the top of the RV, the swiper list will "refresh"
@@ -101,5 +109,46 @@ public class ChatFragment extends Fragment {
         //when we get the response back from the server, clear the edittext
         mSendModel.addResponseObserver(getViewLifecycleOwner(), response ->
                 binding.editMessage.setText(""));
+
+        binding.buttonAddNewUserChats.setOnClickListener(button -> {
+            final View newUserPopupView = getLayoutInflater().inflate(R.layout.popup_new_user_chats, null);
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this.getContext());
+            dialogBuilder.setView(newUserPopupView);
+            Dialog dialog = dialogBuilder.create();
+            dialog.show();
+            Button submitButton = newUserPopupView.findViewById(R.id.button_submit_new_user_chats);
+
+            submitButton.setOnClickListener(innerButton -> {
+                EditText emailText = newUserPopupView.findViewById(R.id.text_add_new_chat_email);
+                mChatModel.connectPostAddUser(mUserModel.getmJwt(), mArgs.getChat().getChatId(), emailText.getText().toString());
+                mChatModel.addPostResponseObserver(getViewLifecycleOwner(), response ->{
+                    dialog.dismiss();
+                    observePutResponse(response);
+                });
+            });
+        });
+    }
+    /**
+     * An observer on the HTTP Response from the web server.
+     *
+     * @param response the Response from the server
+     */
+    private void observePutResponse(final JSONObject response) {
+        if (response.length() > 0) {
+            if (response.has("success")) {
+                try {
+                    if (response.get("success").equals(true)) {
+                        Log.i("SUCCESS", "Success!");
+                        mSendModel.sendMessage(mChatId,
+                                mUserModel.getmJwt(),
+                                "Welcome to the chat!");
+                    } else
+                        Log.e("PUT Response", "Put response failed");
+                } catch (JSONException e) {
+                    Log.e("JSON Parse Error", e.getMessage());
+                }
+            } else
+                Log.d("JSON Response", "No Response");
+        }
     }
 }
