@@ -4,6 +4,8 @@ import static edu.uw.tcss450.tcss450group82022.utils.PasswordValidator.checkExcl
 import static edu.uw.tcss450.tcss450group82022.utils.PasswordValidator.checkPwdLength;
 import static edu.uw.tcss450.tcss450group82022.utils.PasswordValidator.checkPwdSpecialChar;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,9 +18,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.auth0.android.jwt.JWT;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.uw.tcss450.tcss450group82022.R;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentSignInBinding;
 import edu.uw.tcss450.tcss450group82022.model.PushyTokenViewModel;
 import edu.uw.tcss450.tcss450group82022.model.UserInfoViewModel;
@@ -62,6 +67,27 @@ public class SignInFragment extends Fragment {
         binding = FragmentSignInBinding.inflate(inflater);
         // Inflate the layout for this fragment
         return binding.getRoot();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        SharedPreferences prefs =
+                getActivity().getSharedPreferences(
+                        getString(R.string.keys_shared_prefs),
+                        Context.MODE_PRIVATE);
+        if (prefs.contains(getString(R.string.keys_prefs_jwt))) {
+            String token = prefs.getString(getString(R.string.keys_prefs_jwt), "");
+            JWT jwt = new JWT(token);
+            // Check to see if the web token is still valid or not. To make a JWT expire after a
+            // longer or shorter time period, change the expiration time when the JWT is
+            // created on the web service.
+            if(!jwt.isExpired(0)) {
+                String email = jwt.getClaim("email").asString();
+                navigateToSuccess(email, token);
+                return;
+            }
+        }
     }
 
     @Override
@@ -134,11 +160,19 @@ public class SignInFragment extends Fragment {
      * @param jwt the JSON Web Token supplied by the server
      */
     private void navigateToSuccess(final String email, final String jwt) {
+        if (binding.switchSignin.isChecked()) {
+            SharedPreferences prefs =
+                    getActivity().getSharedPreferences(
+                            getString(R.string.keys_shared_prefs),
+                            Context.MODE_PRIVATE);
+            //Store the credentials in SharedPrefs
+            prefs.edit().putString(getString(R.string.keys_prefs_jwt), jwt).apply();
+        }
         Navigation.findNavController(getView())
                 .navigate(SignInFragmentDirections
                         .actionLoginFragmentToMainActivity(email, jwt));
-
-
+        //Remove THIS activity from the Task list. Pops off the backstack
+        getActivity().finish();
     }
 
     /**

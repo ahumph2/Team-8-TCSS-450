@@ -60,6 +60,12 @@
     <string name="chat_Id_text_view">ChatID</string>
     <string name="title_chats">Chats</string>
 
+    <!-- Preference Strings -->
+    <string name="switch_sign_in">Stay Signed in</string>
+    <string name="keys_shared_prefs">My Auth App Shared Prefs</string>
+    <string name="keys_prefs_jwt">Sharded Prefs JWT</string>
+    <string name="action_sign_out">Sign Out</string>
+
     <string name="label_chat">Chat</string>
     <string name="label_weather">Weather</string>
     <string name="label_contacts">Contacts</string>
