@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.fragment.app.Fragment;
 
 import edu.uw.tcss450.tcss450group82022.R;
@@ -25,7 +25,6 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import edu.uw.tcss450.tcss450group82022.R;
 
 @Metadata(
         mv = {1, 7, 1},
@@ -33,7 +32,7 @@ import edu.uw.tcss450.tcss450group82022.R;
         d1 = {"\u0000\"\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0005\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\u0018\u00002\u00020\u0001:\u0001\rB\u0005¢\u0006\u0002\u0010\u0002J\u0012\u0010\t\u001a\u00020\n2\b\u0010\u000b\u001a\u0004\u0018\u00010\fH\u0014R\u0014\u0010\u0003\u001a\u00020\u0004X\u0086D¢\u0006\b\n\u0000\u001a\u0004\b\u0005\u0010\u0006R\u0014\u0010\u0007\u001a\u00020\u0004X\u0086D¢\u0006\b\n\u0000\u001a\u0004\b\b\u0010\u0006¨\u0006\u000e"},
         d2 = {"Lcom/example/weatherapp/MainActivity;", "Landroidx/appcompat/app/AppCompatActivity;", "()V", "API", "", "getAPI", "()Ljava/lang/String;", "CITY", "getCITY", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "weatherTask", "UI_and_Navigation_Lab.app.main"}
 )
-public class WeatherFragment extends Fragment {
+public class WeatherFragment2 extends Fragment {
         @NotNull
         private final String CITY = "dhaka,bd";
         @NotNull
@@ -56,7 +55,7 @@ public class WeatherFragment extends Fragment {
                 // Inflate the layout for this fragment
 
                 this.view = inflater.inflate(R.layout.fragment_weather, container, false);
-                (new WeatherFragment.weatherTask()).execute(new String[0]);
+                (new WeatherFragment2.weatherTask()).execute(new String[0]);
                 return view;
         }
 
