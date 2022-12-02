@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class ChatCard implements Serializable{
     private final String mChatId;
+    private final String mChatName;
 
     /**
      * Helper class for building Credentials.
@@ -12,14 +13,16 @@ public class ChatCard implements Serializable{
      */
     public static class Builder{
         private final String mChatId;
+        private final String mChatName;
 
         /**
          * Constructs a new Builder.
          *
          * @param chatId the chatId for the chat
          */
-        public Builder(String chatId) {
+        public Builder(String chatId, String chatName) {
             this.mChatId = chatId;
+            this.mChatName = chatName;
         }
 
 
@@ -31,11 +34,14 @@ public class ChatCard implements Serializable{
 
     private ChatCard(final Builder builder) {
         this.mChatId = builder.mChatId;
+        this.mChatName = builder.mChatName;
     }
 
     public String getChatId() {
         return mChatId;
     }
+
+    public String getChatName() { return mChatName; }
 
 
 }

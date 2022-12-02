@@ -74,7 +74,7 @@ public class ChatListRecyclerViewAdapter extends RecyclerView.Adapter<ChatListRe
                         ChatListFragmentDirections
                                 .actionNavigationChatsToChatFragment(chatCard));
             });
-            binding.textChatId.setText("ChatId:" + chatCard.getChatId());
+            binding.textChatId.setText(chatCard.getChatName());
         }
     }
 }

@@ -68,16 +68,25 @@ public class ChatListViewModel extends AndroidViewModel {
                 getApplication().getResources()::getString;
         try {
             JSONObject root = result;
-            if (root.has(getString.apply(R.string.keys_json_chats_rows))) {
-                JSONArray data = root.getJSONArray(
-                        getString.apply(R.string.keys_json_chats_rows));
-                for(int i = 0; i < data.length(); i++) {
-                    JSONObject jsonChat = data.getJSONObject(i);
-                    Log.i("DATA", "jsonChat: " + jsonChat );
+            Log.e("CHATID", "Root: " + root);
+            // Collect Chat Ids
+            if (root.has(getString.apply(R.string.keys_json_chats_chatIdList)) &&
+                    root.has(getString.apply(R.string.keys_json_chats_chatNameList))) {
+                Log.e("CHATID", "Passed");
+                JSONArray chatIdData = root.getJSONArray(
+                        getString.apply(R.string.keys_json_chats_chatIdList));
+                JSONArray chatNameData = root.getJSONArray(
+                        getString.apply(R.string.keys_json_chats_chatNameList));
+                for(int i = 0; i < chatIdData.length(); i++) {
+                    JSONObject jsonChatId = chatIdData.getJSONObject(i);
+                    JSONObject jsonChatName = chatNameData.getJSONObject(i);
                     ChatCard chatCard = new ChatCard.Builder(
-                            jsonChat.getString(
+                            jsonChatId.getString(
                                     getString.apply(
-                                            R.string.keys_json_chats_chatId)))
+                                            R.string.keys_json_chats_chatId)),
+                            jsonChatName.getString(
+                                    getString.apply(
+                                            R.string.keys_json_chats_name)))
                             .build();
                     if (!mChatList.getValue().contains(chatCard)) {
                         mChatList.getValue().add(chatCard);
