@@ -8,12 +8,16 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.badge.BadgeDrawable;
+
 import edu.uw.tcss450.tcss450group82022.R;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentHomeBinding;
+import edu.uw.tcss450.tcss450group82022.model.NewMessageCountViewModel;
 import edu.uw.tcss450.tcss450group82022.model.UserInfoViewModel;
 
 import java.text.SimpleDateFormat;
@@ -25,10 +29,21 @@ import java.util.Locale;
  */
 public class HomeFragment extends Fragment {
 
+    private NewMessageCountViewModel mNewMessageModel;
+    private Integer mMessageCount;
+
     public HomeFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mNewMessageModel = new ViewModelProvider(this).get(NewMessageCountViewModel.class);
+        mNewMessageModel.addMessageCountObserver(this, count -> {
+            mMessageCount = count;
+        });
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,10 +64,11 @@ public class HomeFragment extends Fragment {
         UserInfoViewModel model = new ViewModelProvider(getActivity())
                 .get(UserInfoViewModel.class);
         binding.textEmail.setText(getString(R.string.label_home, model.getEmail()));
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd 'at' HH:mm:ss z", Locale.ENGLISH);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH);
         String currentDateandTime = sdf.format(new Date());
         binding.textTime.setText(getString(R.string.label_time, currentDateandTime));
 
+        binding.textCurrentMessageCount.setText(getString(R.string.label_home_message_notification, String.valueOf(mMessageCount)));
         //On button click, navigate to Second Home
         binding.buttonNext.setOnClickListener(button ->
                 Navigation.findNavController(requireView()).navigate(

@@ -18,14 +18,17 @@
 
         <Button
             android:id="@+id/button_enter_chat"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="304dp"
+            android:layout_height="0dp"
             android:alpha="0.1"
             android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Enter Chat Room"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             tools:visibility="visible" />
 
         <ImageView
@@ -43,8 +46,8 @@
 
         <TextView
             android:id="@+id/text_chat_id"
-            android:layout_width="186dp"
-            android:layout_height="31dp"
+            android:layout_width="117dp"
+            android:layout_height="32dp"
             android:layout_marginEnd="15dp"
             android:lineSpacingExtra="8sp"
             android:text="@string/chat_Id_text_view"
@@ -53,8 +56,23 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/image_arrow_right"
+            app:layout_constraintHorizontal_bias="0.696"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/button_delete_chatroom"
+            android:layout_width="97dp"
+            android:layout_height="0dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Delete Chat Room"
+            android:src="@drawable/ic_baseline_delete_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/text_chat_id"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
