@@ -25,6 +25,7 @@
         android:id="@+id/layout_inner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/iconTransparent"
         app:layout_constraintBottom_toTopOf="@+id/text_title"
         app:layout_constraintTop_toTopOf="@+id/text_title">
 

@@ -5,19 +5,48 @@
     android:id="@+id/layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/weather_background"
     tools:context=".ui.chat.ChatFragment">
 
-    <Button
-        android:id="@+id/button_add_new_user_chats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
-        android:minHeight="50dp"
-        android:text="Add"
-        app:layout_constraintBottom_toTopOf="@+id/list_root"
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/iconTransparentDarker"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/swipe_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/empty_spacer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+
+        <TextView
+            android:id="@+id/text_chat_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="@color/secondaryTextColorFade"
+            android:textSize="20sp"
+            android:translationY="10dp" />
+
+        <ImageButton
+            android:id="@+id/button_add_new_user_chats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="?android:attr/selectableItemBackground"
+            android:minHeight="50dp"
+            android:src="@drawable/ic_contact_black_24dp"
+            android:text="Add" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/edit_message"
@@ -26,12 +55,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_send"
-        app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/button_send"
@@ -51,7 +81,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/edit_message"
