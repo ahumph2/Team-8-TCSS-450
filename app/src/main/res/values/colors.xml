@@ -6,7 +6,7 @@
     <color name="colorOffWhite">#E9E9E9</color>
     <color name="colorMainGradientStart">#ACB6E5</color>
     <color name="colorMainGradientEnd">#74ebd5</color>
-    <color name="iconTransparent">#3CF1EBF1</color>
+    <color name="iconTransparent">#3CDD18DD</color>
 
     <color name="primaryColor">#4527a0</color>
     <color name="primaryLightColor">#7953d2</color>
@@ -18,4 +18,28 @@
     <color name="secondaryTextColor">#000000</color>
 
     <color name="secondaryTextColorFade">#222222</color>
+
+    <color name="headerColor">#041f49</color>
+
+
+
+    <color name="gradientCenterColor">#374675</color>
+    <color name="gradientEndColor">#000022</color>
+
+    <color name="darkModeButtonColor">#80DEEA</color>
+    <color name="lightModeButtonColor">#072F97</color>
+
+    <color name="primaryHintColor">#9F9F9F</color>
+
+    <color name="darkModeTextColor">#FFFFFF</color>
+
+    <color name="lightModeTextColor">#000000</color>
+
+
+    <color name="darkModeBackgroundColor">#252B3D</color>
+    <color name="lightModeBackgroundColor">#5B99C2</color>
+
+    <color name="messageSentColor">#6E9EEB</color>
+    <color name="messageReceivedColor">#CACACA</color>
+
 </resources>

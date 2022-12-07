@@ -34,40 +34,43 @@
         android:label="@string/title_incrementer"
         tools:layout="@layout/fragment_incrementor" />
 
-
     <fragment
         android:id="@+id/navigation_weather"
         android:name="edu.uw.tcss450.tcss450group82022.ui.weather.WeatherFragment"
-        android:label="@string/label_weather"
+        android:label="Weather Hub"
         tools:layout="@layout/fragment_weather">
-        <argument
-            android:name="chatid"
-            app:argType="integer" />
         <action
-            android:id="@+id/action_navigation_weather_to_locationFragment"
-            app:destination="@id/locationFragment" />
+            android:id="@+id/action_nav_weather_to_nav_map"
+            app:destination="@id/nav_map" />
         <action
-            android:id="@+id/action_navigation_weather_to_twelveHourListFragment"
-            app:destination="@id/twelveHourListFragment" />
-        <action
-            android:id="@+id/action_navigation_weather_to_fiveDayListFragment"
-            app:destination="@id/fiveDayListFragment" />
+            android:id="@+id/action_nav_weather_to_nav_weatherprofiles"
+            app:destination="@id/nav_weatherprofiles" />
     </fragment>
+    <action android:id="@+id/action_global_nav_weather" app:destination="@id/navigation_weather" />
     <fragment
-        android:id="@+id/locationFragment"
-        android:name="edu.uw.tcss450.tcss450group82022.ui.weather.LocationFragment"
-        android:label="LocationFragment" />
+        android:id="@+id/nav_map"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.weather.WeatherFragment"
+        android:label="Map"
+        tools:layout="@layout/fragment_map" />
     <fragment
-        android:id="@+id/twelveHourListFragment"
-        android:name="edu.uw.tcss450.tcss450group82022.ui.weather.TwelveHourListFragment"
-        android:label="fragment_twelve_hour_list"
-        tools:layout="@layout/fragment_twelve_hour_list" />
-    <fragment
-        android:id="@+id/fiveDayListFragment"
-        android:name="edu.uw.tcss450.tcss450group82022.ui.weather.FiveDayListFragment"
-        android:label="5 Days Forecast"
-        tools:layout="@layout/fragment_twelve_hour_list" />
+        android:id="@+id/nav_weatherprofiles"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.weather.WeatherProfileFragment"
+        android:label="Your Locations"
+        tools:layout="@layout/fragment_weatherprofile_list" >
+        <action
+            android:id="@+id/action_nav_weatherprofiles_to_nav_weatherprofile_bottomsheet"
+            app:destination="@id/nav_weatherprofile_bottomsheet" />
+    </fragment>
 
+    <dialog
+        android:id="@+id/nav_weatherprofile_bottomsheet"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.weather.WeatherProfileBottomSheetFragment"
+        android:label="nav_weatherprofile_bottomsheet"
+        tools:layout="@layout/fragment_weather_profile_bottom_sheet" >
+        <argument
+            android:name="WeatherProfile"
+            app:argType="edu.uw.tcss450.tcss450group82022.model.WeatherProfile" />
+    </dialog>
     <fragment
         android:id="@+id/navigation_contact"
         android:name="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactFragment"

@@ -36,20 +36,107 @@
     <string name="label_home_message_notification">You currently have %1$s! new messages.</string>
 
     <string name="base_url">https://team8-tcss450-auth.herokuapp.com/</string>
-    <!--Strings for weather-->
-    <string name="textView_weather_current_city">City</string>
-    <string name="textView_weather_current_temperature">Temperature</string>
-    <string name="textView_weather_current_status">Status</string>
-    <string name="item_weather_current_location">Change to current location</string>
-    <string name="item_weather_zipcode">Change by Zip code</string>
-    <string name="item_weather_map">Change by location</string>
+    <!--weather fragment strings-->
+    <string name="tv_weather_weatherHub">WeatherHub</string>
+    <string name="tv_weather_currentLocation">"Current Location: "</string>
+    <string name="tv_weather_currentCityState">Tacoma, WA</string>
+    <string name="et_weather_searchByZip">Search by Zip</string>
+    <string name="tv_weather_map"><u>Map View</u></string>
+    <string name="tv_weather_saveLocation"><u>Save Current Location</u></string>
+    <string name="tv_weather_savedLocations"><u>View Saved Locations</u></string>
+    <string name="tv_weather_currentConditions">Current Conditions</string>
+    <string name="tv_weather_24hourForecast">24-Hour Forecast</string>
+    <string name="tv_weather_7dayForecast">7-Day Forecast</string>
+    <string name="btn_weather_search">Search</string>
+    <string name="btn_map_use">Use This Location</string>
+    <!--current conditions strings-->
+    <string name="tv_weather_temperature">Temperature:</string>
+    <string name="tv_weather_tempMin">High:</string>
+    <string name="tv_weather_tempMax">Low:</string>
+    <string name="tv_weather_wind">Wind:</string>
+    <string name="tv_weather_description">Looks like:</string>
+    <string name="tv_weather_precipitation">Precipitation:</string>
+    <string name="tv_weather_humidity">Humidity:</string>
+    <string name="tv_weather_sunrise">Sunrise:</string>
+    <string name="tv_weather_sunset">Sunset:</string>
+    <!--current conditions default strings-->
+    <string name="tv_weather_windunits_imperial">MPH</string>
+    <string name="tv_weather_windunits_metric">KPH</string>
+    <string name="tv_weather_temperatureDefault">72\u00A0</string>
+    <string name="tv_weather_tempMinDefault">60°</string>
+    <string name="tv_weather_tempMaxDefault">80°</string>
+    <string name="tv_weather_windDefault">5</string>
 
-    <string name="favor_contact_dialog">This is your favorite person?</string>
-    <string name="title_activity_weather">WeatherActivity</string>
+    <string name="tv_weather_descriptionDefault">Sunny</string>
+    <string name="tv_weather_descriptionDefaultLong">It\'s Windy Out Tonight</string>
+    <string name="tv_weather_precipitationDefault">85%</string>
+    <string name="tv_weather_humidityDefault">50%</string>
+    <string name="tv_weather_sunriseDefault">8 AM</string>
+    <string name="tv_weather_sunsetDefault">6 PM</string>
 
+    <!--24-hour strings-->
+    <string name="tv_weather_24hourNow">Now</string>
+    <string name="tv_weather_24hour2">Hour 2</string>
+    <string name="tv_weather_24hour3">Hour 3</string>
+    <string name="tv_weather_24hour4">Hour 4</string>
+    <string name="tv_weather_24hour5">Hour 5</string>
+    <string name="tv_weather_24hour6">Hour 6</string>
+    <string name="tv_weather_24hour7">Hour 7</string>
+    <string name="tv_weather_24hour8">Hour 8</string>
+    <string name="tv_weather_24hour9">Hour 9</string>
+    <string name="tv_weather_24hour10">Hour 10</string>
+    <string name="tv_weather_24hour11">Hour 11</string>
+    <string name="tv_weather_24hour12">Hour 12</string>
+    <string name="tv_weather_24hour13">Hour 13</string>
+    <string name="tv_weather_24hour14">Hour 14</string>
+    <string name="tv_weather_24hour15">Hour 15</string>
+    <string name="tv_weather_24hour16">Hour 16</string>
+    <string name="tv_weather_24hour17">Hour 17</string>
+    <string name="tv_weather_24hour18">Hour 18</string>
+    <string name="tv_weather_24hour19">Hour 19</string>
+    <string name="tv_weather_24hour20">Hour 20</string>
+    <string name="tv_weather_24hour21">Hour 21</string>
+    <string name="tv_weather_24hour22">Hour 22</string>
+    <string name="tv_weather_24hour23">Hour 23</string>
+    <string name="tv_weather_24hour24">Hour 24</string>
+    <!--image strings-->
+    <string name="iv_weather_24hourDefault">06:30</string>
 
-    <string name="label_location">Confirm location?:</string>
+    <!--default weather frag descriptions-->
+    <string name="tv_weather_24hourDescriptionDefault">Sunny</string>
+    <string name="tv_weather_24hourTemperatureDefault">72°</string>
+    <string name="tv_weather_10dayDate_today">Today</string>
+    <string name="tv_weather_10dayDate_date">Wed, Dec 25</string>
+    <string name="iv_weather_10dayIcon">Day 1 Image</string>
+    <string name="tv_weather_10dayTempHighDefault">72°</string>
+    <string name="tv_weather_10dayTempLowDefault">32°</string>
+    <string name="PLACEHOLDER">PLACEHOLDER</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_logout">Log Out</string>
+    <string name="keys_prefs_tempunit">tempunit</string>
+    <!-- Keys for current and saved location weather profiles, and timestamp -->
+    <string name="keys_prefs_weathervm_current">current</string>
+    <string name="keys_prefs_weathervm_saved">saved</string>
+    <string name="keys_prefs_weathervm_lastupdated">lastupdated</string>
+    <!-- Misc. Strings -->
+    <string name="misc_temp_unit_symbol">°</string>
+    <string name="misc_arrow_up">↑</string>
+    <string name="misc_arrow_down">↓</string>
+    <string name="misc_middle_dot">•</string>
+    <!-- No-break space added because italics on string w/wrap content causes clipping-->
+    <string name="misc_temp_unit_display_imperial">°F\u00A0</string>
+    <string name="misc_temp_unit_display_metric">°C\u00A0</string>
+    <string name="keys_json_chats_description">description</string>
     <string name="title_activity_maps">Map</string>
+    <string name="keys_json_chats_name">name</string>
+    <string name="btn_weatheprofile_use">Use Location</string>
+    <string name="btn_weatherprofile_remove">Remove</string>
+    <string name="menu_weather">WeatherHub</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="text_blank">Blank Text</string>
@@ -71,4 +158,5 @@
     <string name="label_contacts">Contacts</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
