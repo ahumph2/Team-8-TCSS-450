@@ -79,7 +79,7 @@ public class WeatherProfileViewModel extends AndroidViewModel {
             for(LatLng loc : mSavedLocations) {
                 Uri uri = new Uri.Builder()
                         .scheme("https")
-                        .authority("team8-tcss450-auth.herokuapp.com")
+                        .authority("tcss450-2022au-group8.herokuapp.com")
                         .appendPath("weather")
                         .appendPath(Double.toString(loc.latitude) + ':' + loc.longitude)
                         .build();

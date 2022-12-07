@@ -151,7 +151,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         if(wpToLoad == null) {
             Uri uri = new Uri.Builder()
                     .scheme("https")
-                    .authority("team8-tcss450-auth.herokuapp.com")
+                    .authority("tcss450-2022au-group8.herokuapp.com")
                     .appendPath("weather")
                     .appendPath(mapLocation.latitude + ":" + mapLocation.longitude)
                     .build();

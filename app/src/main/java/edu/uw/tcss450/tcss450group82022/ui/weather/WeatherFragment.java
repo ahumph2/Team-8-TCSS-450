@@ -139,7 +139,7 @@ public class WeatherFragment extends Fragment {
                             mFromZip = new LatLng(addr.getLatitude(),addr.getLongitude());
                             Uri uri = new Uri.Builder()
                                     .scheme("https")
-                                    .authority("team8-tcss450-auth.herokuapp.com")
+                                    .authority("tcss450-2022au-group8.herokuapp.com")
                                     .appendPath("weather")
                                     .appendPath(mFromZip.latitude + ":" + mFromZip.longitude)
                                     .build();
