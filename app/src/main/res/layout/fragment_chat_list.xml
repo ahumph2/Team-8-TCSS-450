@@ -24,22 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_chat_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="300dp"
-        android:background="@color/iconTransparent"
-        android:minHeight="50dp"
-        android:text="Edit"
-        app:icon="@drawable/ic_baseline_create_24"
-        app:layout_constraintBottom_toTopOf="@+id/list_root"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_root"
         android:name="edu.uw.tcss450.tcss450group82022.ui.blog.BlogFragment"

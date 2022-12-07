@@ -35,7 +35,7 @@
     <string name="label_time">The current time is %1$s</string>
     <string name="label_home_message_notification">You currently have %1$s! new messages.</string>
 
-    <string name="base_url">https://team8-tcss450-auth.herokuapp.com/</string>
+    <string name="base_url">https://tcss450-2022au-group8.herokuapp.com/</string>
     <!--weather fragment strings-->
     <string name="tv_weather_weatherHub">WeatherHub</string>
     <string name="tv_weather_currentLocation">"Current Location: "</string>

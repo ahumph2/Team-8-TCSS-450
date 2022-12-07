@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -68,6 +69,7 @@ public class ChatFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         FragmentChatBinding binding = FragmentChatBinding.bind(getView());
+        binding.textChatName.setText(mArgs.getChat().getChatName());
 
         //SetRefreshing shows the internal Swiper view progress bar. Show this until messages load
         binding.swipeContainer.setRefreshing(true);
@@ -117,6 +119,8 @@ public class ChatFragment extends Fragment {
             Dialog dialog = dialogBuilder.create();
             dialog.show();
             Button submitButton = newUserPopupView.findViewById(R.id.button_submit_new_user_chats);
+            TextView chatNameView = newUserPopupView.findViewById(R.id.text_chat_room_name);
+            chatNameView.setText(mArgs.getChat().getChatName());
 
             submitButton.setOnClickListener(innerButton -> {
                 EditText emailText = newUserPopupView.findViewById(R.id.text_add_new_chat_email);

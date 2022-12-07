@@ -94,7 +94,7 @@ public class ChatListFragment extends Fragment {
             Log.i("CHAT", "chatList: " + chatList);
             if (!chatList.isEmpty()) {
                 binding.listRoot.setAdapter(
-                        new ChatListRecyclerViewAdapter(chatList)
+                        new ChatListRecyclerViewAdapter(chatList, this)
                 );
             }
             binding.layoutWait.setVisibility(View.GONE);

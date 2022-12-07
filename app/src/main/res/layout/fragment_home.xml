@@ -60,6 +60,7 @@
             android:layout_height="5dp" />
 
         <TextView
+            android:id="@+id/text_current_message_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_home_message_notification"

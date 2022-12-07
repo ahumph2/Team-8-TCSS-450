@@ -6,7 +6,8 @@
     <color name="colorOffWhite">#E9E9E9</color>
     <color name="colorMainGradientStart">#ACB6E5</color>
     <color name="colorMainGradientEnd">#74ebd5</color>
-    <color name="iconTransparent">#3CDD18DD</color>
+    <color name="iconTransparent">#3CF1EBF1</color>
+    <color name="iconTransparentDarker">#3CACA8AC</color>
 
     <color name="primaryColor">#4527a0</color>
     <color name="primaryLightColor">#7953d2</color>
