@@ -25,9 +25,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.IntFunction;
 
 import edu.uw.tcss450.tcss450group82022.R;
 import edu.uw.tcss450.tcss450group82022.io.RequestQueueSingleton;
+import edu.uw.tcss450.tcss450group82022.ui.contacts.ContactCard;
 
 public class ChatViewModel extends AndroidViewModel {
 
@@ -40,11 +42,15 @@ public class ChatViewModel extends AndroidViewModel {
 
     private MutableLiveData<JSONObject> mAddUserResponse;
 
+    private MutableLiveData<List<ContactCard>> mUserList;
+
     public ChatViewModel(@NonNull Application application) {
         super(application);
         mMessages = new HashMap<>();
         mAddUserResponse = new MutableLiveData<>();
         mAddUserResponse.setValue(new JSONObject());
+        mUserList = new MutableLiveData<>();
+        mUserList.setValue(new ArrayList<>());
     }
 
     /**
@@ -68,6 +74,11 @@ public class ChatViewModel extends AndroidViewModel {
     public void addPostResponseObserver(@NonNull LifecycleOwner owner,
                                        @NonNull Observer<? super JSONObject> observer){
         mAddUserResponse.observe(owner, observer);
+    }
+
+    public void addUserListObserver(@NonNull LifecycleOwner owner,
+                                    @NonNull Observer<? super List<ContactCard>> observer) {
+        mUserList.observe(owner, observer);
     }
 
     /**
@@ -227,6 +238,41 @@ public class ChatViewModel extends AndroidViewModel {
         }
     }
 
+    /**
+     * Handle the GET response, giving us a list of users in a chat room
+     * @param result
+     */
+    private void handleGetResult(final JSONObject result) {
+        mUserList.setValue(new ArrayList<>());
+        IntFunction<String> getString =
+                getApplication().getResources()::getString;
+        try {
+            JSONObject root = result;
+            // Collect User emails
+            if (root.has(getString.apply(R.string.keys_json_chats_rows))) {
+                JSONArray chatIdEmail = root.getJSONArray(
+                        getString.apply(R.string.keys_json_chats_rows));
+                for(int i = 0; i < chatIdEmail.length(); i++) {
+                    JSONObject jsonChatEmail = chatIdEmail.getJSONObject(i);
+                    ContactCard contactCard = new ContactCard.Builder(
+                            jsonChatEmail.getString(
+                                    getString.apply(
+                                            R.string.keys_json_chats_email)))
+                            .build();
+                    if (!mUserList.getValue().contains(contactCard)) {
+                        mUserList.getValue().add(contactCard);
+                    }
+                }
+            } else {
+                Log.e("ERROR!", "No data array");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("ERROR!", e.getMessage());
+        }
+        mUserList.setValue(mUserList.getValue());
+    }
+
     private void handleError(final VolleyError error) {
         if (Objects.isNull(error.networkResponse)) {
             Log.e("NETWORK ERROR", error.getMessage());
@@ -237,6 +283,30 @@ public class ChatViewModel extends AndroidViewModel {
                     error.networkResponse.statusCode +
                     " " +
                     data);
+        }
+    }
+
+    private void handlePostError(final VolleyError error){
+        if (Objects.isNull(error.networkResponse)) {
+            try {
+                mAddUserResponse.setValue(new JSONObject("{" +
+                        "error:\"" + error.getMessage() +
+                        "\"}"));
+            } catch (JSONException e) {
+                Log.e("JSON PARSE", "JSON Parse Error in handleError");
+            }
+        }
+        else {
+            String data = new String(error.networkResponse.data, Charset.defaultCharset())
+                    .replace('\"', '\'');
+            try {
+                JSONObject response = new JSONObject();
+                response.put("code", error.networkResponse.statusCode);
+                response.put("data", new JSONObject(data));
+                mAddUserResponse.setValue(response);
+            } catch (JSONException e) {
+                Log.e("JSON PARSE", "JSON Parse Error in handleError");
+            }
         }
     }
 
@@ -254,6 +324,34 @@ public class ChatViewModel extends AndroidViewModel {
                 url,
                 body,
                 mAddUserResponse::setValue,
+                this::handlePostError) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                // add headers <key,value>
+                headers.put("Authorization", jwt);
+                return headers;
+            }
+        };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        Volley.newRequestQueue(getApplication().getApplicationContext())
+                .add(request);
+
+    }
+
+    public void connectGetUserList(final String jwt, final String chatId){
+        String url =
+                getApplication().getResources().getString(R.string.base_url)+"chats/chatroom/"+chatId;
+        JSONObject body = new JSONObject();
+        Request request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                body,
+                this::handleGetResult,
                 this::handleError) {
             @Override
             public Map<String, String> getHeaders() {

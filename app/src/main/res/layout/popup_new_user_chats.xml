@@ -60,13 +60,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_chatroom_users"
-        android:layout_width="401dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/label_add_new_user_chats"
+        android:name="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactListFragment"
+        android:layout_width="0dp"
+        android:layout_height="185dp"
+        android:layout_marginTop="76dp"
+        android:orientation="vertical"
+        app:layoutManager="LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_chat_room_name" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactListFragment"
+        tools:listitem="@layout/fragment_contact_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
