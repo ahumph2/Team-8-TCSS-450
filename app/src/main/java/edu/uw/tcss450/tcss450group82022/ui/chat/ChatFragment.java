@@ -22,7 +22,9 @@ import org.json.JSONObject;
 
 import edu.uw.tcss450.tcss450group82022.R;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentChatBinding;
+import edu.uw.tcss450.tcss450group82022.model.NewMessageCountViewModel;
 import edu.uw.tcss450.tcss450group82022.model.UserInfoViewModel;
+import edu.uw.tcss450.tcss450group82022.ui.contacts.ContactListRecyclerViewAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,6 +42,8 @@ public class ChatFragment extends Fragment {
 
     private ChatSendViewModel mSendModel;
 
+    private NewMessageCountViewModel mNewMessageModel;
+
     public ChatFragment() {
         // Required empty public constructor
     }
@@ -55,6 +59,8 @@ public class ChatFragment extends Fragment {
         mChatModel.getFirstMessages(mChatId, mUserModel.getmJwt());
 
         mSendModel = provider.get(ChatSendViewModel.class);
+
+        mNewMessageModel = new ViewModelProvider(this).get(NewMessageCountViewModel.class);
     }
 
     @Override
@@ -109,25 +115,42 @@ public class ChatFragment extends Fragment {
                     binding.editMessage.getText().toString());
         });
         //when we get the response back from the server, clear the edittext
-        mSendModel.addResponseObserver(getViewLifecycleOwner(), response ->
-                binding.editMessage.setText(""));
+        mSendModel.addResponseObserver(getViewLifecycleOwner(), response ->{
+            binding.editMessage.setText("");
+            mNewMessageModel.reset();
+        });
 
+        // Clicking the button to add a user to the chat room
         binding.buttonAddNewUserChats.setOnClickListener(button -> {
+            // Create the add user popup
             final View newUserPopupView = getLayoutInflater().inflate(R.layout.popup_new_user_chats, null);
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this.getContext());
             dialogBuilder.setView(newUserPopupView);
             Dialog dialog = dialogBuilder.create();
             dialog.show();
+            // Grabbing views
             Button submitButton = newUserPopupView.findViewById(R.id.button_submit_new_user_chats);
             TextView chatNameView = newUserPopupView.findViewById(R.id.text_chat_room_name);
-            chatNameView.setText(mArgs.getChat().getChatName());
+            RecyclerView chatUsersRecyclerView = newUserPopupView.findViewById(R.id.recycler_view_chatroom_users);
 
+            // Set chat room name
+            chatNameView.setText(mArgs.getChat().getChatName());
+            // Get list of users in the room
+            mChatModel.connectGetUserList(mUserModel.getmJwt(), mArgs.getChat().getChatId());
+            mChatModel.addUserListObserver(getViewLifecycleOwner(), userList -> {
+                if (!userList.isEmpty()) {
+                    Log.e("USERS", "User list is not empty. It is: " + userList);
+                    chatUsersRecyclerView.setAdapter(
+                            new UserListRecyclerViewAdapter(userList)
+                    );
+                }
+            });
+            // Add submit button functionality
             submitButton.setOnClickListener(innerButton -> {
                 EditText emailText = newUserPopupView.findViewById(R.id.text_add_new_chat_email);
                 mChatModel.connectPostAddUser(mUserModel.getmJwt(), mArgs.getChat().getChatId(), emailText.getText().toString());
                 mChatModel.addPostResponseObserver(getViewLifecycleOwner(), response ->{
-                    dialog.dismiss();
-                    observePutResponse(response);
+                    observeAddUserResponse(response, dialog, emailText);
                 });
             });
         });
@@ -137,17 +160,26 @@ public class ChatFragment extends Fragment {
      *
      * @param response the Response from the server
      */
-    private void observePutResponse(final JSONObject response) {
+    private void observeAddUserResponse(final JSONObject response, Dialog dialog, EditText emailText) {
         if (response.length() > 0) {
             if (response.has("success")) {
                 try {
                     if (response.get("success").equals(true)) {
                         Log.i("SUCCESS", "Success!");
+                        dialog.dismiss();
                         mSendModel.sendMessage(mChatId,
                                 mUserModel.getmJwt(),
                                 "Welcome to the chat!");
                     } else
-                        Log.e("PUT Response", "Put response failed");
+                        Log.e("POST Response", "Post response failed");
+                } catch (JSONException e) {
+                    Log.e("JSON Parse Error", e.getMessage());
+                }
+            } else if (response.has("code")){
+                try {
+                    emailText.setError(
+                            "Error Authenticating: " +
+                                    response.getJSONObject("data").getString("message"));
                 } catch (JSONException e) {
                     Log.e("JSON Parse Error", e.getMessage());
                 }

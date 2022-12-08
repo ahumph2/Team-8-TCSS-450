@@ -19,10 +19,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.IntFunction;
 
 import edu.uw.tcss450.tcss450group82022.R;
@@ -30,6 +32,7 @@ import edu.uw.tcss450.tcss450group82022.R;
 public class ChatListViewModel extends AndroidViewModel {
     private MutableLiveData<List<ChatCard>> mChatList;
     private MutableLiveData<String> mChatId;
+    private MutableLiveData<JSONObject> mPostResponse;
     private MutableLiveData<JSONObject> mPutResponse;
     private MutableLiveData<JSONObject> mDeleteResponse;
 
@@ -39,6 +42,8 @@ public class ChatListViewModel extends AndroidViewModel {
         mChatList.setValue(new ArrayList<>());
         mChatId = new MutableLiveData<>();
         mChatId.setValue("");
+        mPostResponse = new MutableLiveData<>();
+        mPostResponse.setValue(new JSONObject());
         mPutResponse = new MutableLiveData<>();
         mPutResponse.setValue(new JSONObject());
         mDeleteResponse = new MutableLiveData<>();
@@ -51,9 +56,9 @@ public class ChatListViewModel extends AndroidViewModel {
         mChatList.observe(owner, observer);
     }
 
-    public void addChatIdObserver(@NonNull LifecycleOwner owner,
-                                  @NonNull Observer<? super String> observer){
-        mChatId.observe(owner, observer);
+    public void addPostResponseObserver(@NonNull LifecycleOwner owner,
+                                        @NonNull Observer<? super JSONObject> observer){
+        mPostResponse.observe(owner, observer);
     }
 
     public void addPutResponseObserver(@NonNull LifecycleOwner owner,
@@ -68,10 +73,40 @@ public class ChatListViewModel extends AndroidViewModel {
     // OBSERVER END --------------------------------------------------------------------------------
 
     private void handleError(final VolleyError error) {
-        //you should add much better error handling in a production release.
-        //i.e. YOUR PROJECT
-        Log.e("CONNECTION ERROR", error.getLocalizedMessage());
-        throw new IllegalStateException(error.getMessage());
+        if (Objects.isNull(error.networkResponse)) {
+            Log.e("NETWORK ERROR", error.getMessage());
+        }
+        else {
+            String data = new String(error.networkResponse.data, Charset.defaultCharset());
+            Log.e("CLIENT ERROR",
+                    error.networkResponse.statusCode +
+                            " " +
+                            data);
+        }
+    }
+
+    private void handlePostError(final VolleyError error){
+        if (Objects.isNull(error.networkResponse)) {
+            try {
+                mPostResponse.setValue(new JSONObject("{" +
+                        "error:\"" + error.getMessage() +
+                        "\"}"));
+            } catch (JSONException e) {
+                Log.e("JSON PARSE", "JSON Parse Error in handleError");
+            }
+        }
+        else {
+            String data = new String(error.networkResponse.data, Charset.defaultCharset())
+                    .replace('\"', '\'');
+            try {
+                JSONObject response = new JSONObject();
+                response.put("code", error.networkResponse.statusCode);
+                response.put("data", new JSONObject(data));
+                mPostResponse.setValue(response);
+            } catch (JSONException e) {
+                Log.e("JSON PARSE", "JSON Parse Error in handleError");
+            }
+        }
     }
 
     /**
@@ -120,27 +155,7 @@ public class ChatListViewModel extends AndroidViewModel {
         mChatList.setValue(mChatList.getValue());
     }
 
-    /**
-     * Handles the results from the POST HTTP call
-     * Assigns the new chatId to the MutableLiveData to be accessed elsewhere
-     * @param result
-     */
-    private void handlePostResult(final JSONObject result) {
-        IntFunction<String> getString =
-                getApplication().getResources()::getString;
-        try {
-            JSONObject root = result;
-            Log.i("CHATID", "Root of post result: " + root);
-            if (root.has("chatID")){
-                Log.i("CHATID", "Updating chatId");
-                mChatId.setValue(root.getString("chatID"));
-            }
 
-        } catch (JSONException e){
-            e.printStackTrace();
-            Log.e("ERROR!", e.getMessage());
-        }
-    }
 
     /**
      * GET HTTP Request
@@ -195,8 +210,8 @@ public class ChatListViewModel extends AndroidViewModel {
                 Request.Method.POST,
                 url,
                 body,
-                this::handlePostResult,
-                this::handleError) {
+                mPostResponse::setValue,
+                this::handlePostError) {
             @Override
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = new HashMap<>();
