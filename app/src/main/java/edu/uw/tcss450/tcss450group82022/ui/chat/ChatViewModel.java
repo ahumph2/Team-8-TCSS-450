@@ -254,14 +254,17 @@ public class ChatViewModel extends AndroidViewModel {
                         getString.apply(R.string.keys_json_chats_rows));
                 for(int i = 0; i < chatIdEmail.length(); i++) {
                     JSONObject jsonChatEmail = chatIdEmail.getJSONObject(i);
+                    /**
                     ContactCard contactCard = new ContactCard.Builder(
                             jsonChatEmail.getString(
                                     getString.apply(
                                             R.string.keys_json_chats_email)))
                             .build();
+
                     if (!mUserList.getValue().contains(contactCard)) {
                         mUserList.getValue().add(contactCard);
                     }
+                    */
                 }
             } else {
                 Log.e("ERROR!", "No data array");

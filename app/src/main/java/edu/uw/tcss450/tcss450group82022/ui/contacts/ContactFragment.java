@@ -41,7 +41,6 @@ public class ContactFragment extends Fragment {
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
         mContactModel = provider.get(ContactViewModel.class);
-        mContactModel.getFirst
     }
 
     @Override

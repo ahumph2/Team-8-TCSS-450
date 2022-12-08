@@ -55,4 +55,5 @@ public class ContactCard implements Serializable{
         return result;
     }
 
+
 }

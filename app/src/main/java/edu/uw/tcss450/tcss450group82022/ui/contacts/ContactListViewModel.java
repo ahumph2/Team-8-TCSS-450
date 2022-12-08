@@ -32,14 +32,21 @@ import edu.uw.tcss450.tcss450group82022.io.RequestQueueSingleton;
 
 public class ContactListViewModel extends AndroidViewModel {
     private MutableLiveData<List<ContactCard>> mContactList;
+    private MutableLiveData<JSONObject> mResponse;
 
     public ContactListViewModel(@NonNull Application application) {
         super(application);
         mContactList = new MutableLiveData<>(new ArrayList<>());
+        mResponse = new MutableLiveData<>(new JSONObject());
     }
     public void addContactListObserver(@NonNull LifecycleOwner owner,
                                     @NonNull Observer<? super List<ContactCard>> observer) {
         mContactList.observe(owner, observer);
+    }
+
+    public void addPostResponseObserver(@NonNull LifecycleOwner owner,
+                                        @NonNull Observer<? super JSONObject> observer){
+        mResponse.observe(owner, observer);
     }
 
     /**
@@ -124,8 +131,8 @@ public class ContactListViewModel extends AndroidViewModel {
                 Request.Method.POST,
                 url,
                 body,
-                this::handleAddContact,
-                this::handleError){
+                mResponse::setValue,
+                this::handleError) {
             @Override
             public Map<String, String> getHeaders(){
                 Map<String, String> headers = new HashMap<>();
@@ -134,7 +141,6 @@ public class ContactListViewModel extends AndroidViewModel {
                 return headers;
             }
         };
-
         request.setRetryPolicy(new DefaultRetryPolicy(
                 10_000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
@@ -146,7 +152,7 @@ public class ContactListViewModel extends AndroidViewModel {
 
     //handle add contacts
     private void handleAddContact(final JSONObject response) {
-        
+
         try{
             JSONObject newContact = response.getJSONObject("newContact");
             ContactCard contactCard = new ContactCard(
@@ -167,8 +173,6 @@ public class ContactListViewModel extends AndroidViewModel {
 
         mContactList.setValue(mContactList.getValue());
     }
-
-
 
     //delete contacts
 
