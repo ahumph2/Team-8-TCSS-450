@@ -26,8 +26,7 @@ public class ContactFragment extends Fragment {
 
     private ContactViewModel mContactModel;
     private UserInfoViewModel mUserModel;
-    private Bundle mArgs;
-    private String mContactName;
+    private ContactFragmentArgs mArgs;
     private ContactListRecyclerViewAdapter contactListAdapter;
     private FragmentContactListBinding mBinding;
 
@@ -41,15 +40,13 @@ public class ContactFragment extends Fragment {
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
         mContactModel = provider.get(ContactViewModel.class);
+        mArgs = ContactFragmentArgs.fromBundle(getArguments());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mBinding = FragmentContactListBinding.inflate(inflater);
-        mArgs = getArguments();
-        // Inflate the layout for this fragment
-        return mBinding.getRoot();
+        return inflater.inflate(R.layout.fragment_contact, container, false);
     }
 
     @Override
@@ -58,6 +55,7 @@ public class ContactFragment extends Fragment {
 
         FragmentContactBinding binding = FragmentContactBinding.bind(getView());
 
-        binding.contactNameEdittext.setText(mContactName);
+        binding.contactNameEdittext.setText(mArgs.getContact().getContactFullName());
+        binding.contactEmailEdittext.setText(mArgs.getContact().getmContactEmail());
     }
 }
