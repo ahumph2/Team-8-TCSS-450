@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/navigation_weather"
         android:name="edu.uw.tcss450.tcss450group82022.ui.weather.WeatherFragment"
-        android:label="Weather Hub"
+        android:label="Weather"
         tools:layout="@layout/fragment_weather">
         <action
             android:id="@+id/action_nav_weather_to_nav_map"

@@ -26,10 +26,9 @@
         android:id="@+id/button_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="320dp"
         android:text="@string/action_next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_email" />
 
@@ -90,55 +89,95 @@
 
     <LinearLayout
         android:id="@+id/overviewContainer"
-        android:layout_width="343dp"
-        android:layout_height="148dp"
+        android:layout_width="380dp"
+        android:layout_height="269dp"
         android:layout_centerInParent="true"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/button_next"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_time"
-        app:layout_constraintVertical_bias="0.856">
+        app:layout_constraintTop_toBottomOf="@+id/text_time">
 
         <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/main_weather_currentCityState"
+            android:layout_width="177dp"
+            android:layout_height="29dp"
             android:layout_gravity="center"
-            android:text="Cloudy"
-            android:textSize="18dp" />
+            android:layout_weight="0"
+            android:text="@string/tv_weather_currentCityState"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="italic"
 
-        <TextView
-            android:id="@+id/temp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-thin"
-            android:text="29°C"
-            android:textSize="90dp" />
+            app:layout_constraintBottom_toTopOf="@+id/main_weather_currentIcon"
+            app:layout_constraintEnd_toEndOf="@+id/main_weather_currentIcon"
+            app:layout_constraintStart_toStartOf="@+id/main_weather_currentIcon"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/main_weather_currentIcon"
+            android:layout_width="196dp"
+            android:layout_height="145dp"
+            android:contentDescription="@string/PLACEHOLDER"
+            android:src="@drawable/icon01d"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="142dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/main_weather_currentIcon"
+            app:layout_constraintStart_toStartOf="@+id/main_weather_currentIcon">
 
             <TextView
-                android:id="@+id/temp_min"
+                android:id="@+id/main_weather_currentDescriptionDefault"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Min Temp: 05:05 AM" />
+                android:fontFamily="sans-serif-thin"
+                android:text="@string/tv_weather_descriptionDefault"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <Space
-                android:layout_width="50dp"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="63dp"
+                android:layout_height="26dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_weather_currentDescriptionDefault">
 
-            <TextView
-                android:id="@+id/temp_max"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Max Temp: 05:05 PM" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/main_weather_currentTemperatureDefault"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="sans-serif-thin"
+                    android:paddingStart="0dp"
+                    android:text="@string/tv_weather_temperatureDefault"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_weather_current_tempunits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="@string/misc_temp_unit_display_imperial"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
