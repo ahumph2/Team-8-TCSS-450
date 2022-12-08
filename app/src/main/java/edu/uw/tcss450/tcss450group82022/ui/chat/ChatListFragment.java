@@ -76,17 +76,9 @@ public class ChatListFragment extends Fragment {
                EditText nameText = newChatPopupView.findViewById(R.id.new_chat_name);
                mModel.connectPost(mUserModel.getmJwt(), String.valueOf(nameText.getText()));
                // Observe the response we get from the POST call
-               mModel.addChatIdObserver(getViewLifecycleOwner(), chatId -> {
-                   // Close the popup and get rid of spinner
-                   dialog.dismiss();
+               mModel.addPostResponseObserver(getViewLifecycleOwner(), response -> {
                    binding.layoutWait.setVisibility(View.GONE);
-                   Log.i("CHATID", "ChatId: " + chatId);
-                   // Prevent multiple put calls / add user to new chat
-                   if(!Objects.equals(chatId, "")){
-                       mModel.connectPut(mUserModel.getmJwt(),chatId);
-                   }
-                   // Observe response from put to ensure we have success
-                   mModel.addPutResponseObserver(getViewLifecycleOwner(), this::observePutResponse);
+                   observePostResponse(response, dialog, nameText);
                });
            });
         });
@@ -101,6 +93,35 @@ public class ChatListFragment extends Fragment {
         });
     }
 
+    private void observePostResponse(final JSONObject response, Dialog dialog, EditText nameText){
+        if (response.length() > 0) {
+            if (response.has("chatID")) {
+                try {
+                    String chatId = response.getString("chatID");
+                    // Close the popup and get rid of spinner
+                    dialog.dismiss();
+                    Log.i("CHATID", "ChatId: " + chatId);
+                    // Prevent multiple put calls / add user to new chat
+                    if(!Objects.equals(chatId, "")){
+                        mModel.connectPut(mUserModel.getmJwt(),chatId);
+                    }
+                    // Observe response from put to ensure we have success
+                    mModel.addPutResponseObserver(getViewLifecycleOwner(), this::observePutResponse);
+                } catch (JSONException e) {
+                    Log.e("JSON Parse Error", e.getMessage());
+                }
+            } else if (response.has("code")){
+                try {
+                    nameText.setError(
+                            "Error Authenticating: " +
+                                    response.getJSONObject("data").getString("message"));
+                } catch (JSONException e) {
+                    Log.e("JSON Parse Error", e.getMessage());
+                }
+            } else
+                Log.d("JSON Response", "No Response");
+        }
+    }
     /**
      * An observer on the HTTP Response from the web server.
      *

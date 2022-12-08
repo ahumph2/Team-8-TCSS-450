@@ -81,7 +81,7 @@ public class MyWeatherProfileRecyclerViewAdapter extends RecyclerView.Adapter<My
             holder.mHighTemp.setText(highTemp);
             holder.mHighTemp.setTypeface(Typeface.DEFAULT_BOLD);
             holder.mLowTemp.setText(lowTemp);
-            holder.mIcon.setImageResource(holder.mView.getContext().getResources().getIdentifier(icFile, "mipmap", Objects.requireNonNull(holder.mView.getContext().getPackageName())));
+            holder.mIcon.setImageResource(holder.mView.getContext().getResources().getIdentifier(icFile, "drawable", Objects.requireNonNull(holder.mView.getContext().getPackageName())));
 
             //Display context specific info
             if(position == 0) {

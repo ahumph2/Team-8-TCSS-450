@@ -81,7 +81,7 @@ public class WeatherFragment extends Fragment {
 
         mWeatherVM = new ViewModelProvider(this, (ViewModelProvider.Factory) new WeatherProfileViewModel.WeatherFactory(requireActivity().getApplication()))
                 .get(WeatherProfileViewModel.class);
-        //Utils.updateWeatherIfNecessary(mWeatherVM);
+        Utils.updateWeatherIfNecessary(mWeatherVM);
 
         if(prefs.contains(getString(R.string.keys_prefs_tempunit))) {
             mUnits = prefs.getString(getString(R.string.keys_prefs_tempunit), "F");
@@ -315,7 +315,7 @@ public class WeatherFragment extends Fragment {
             String humidityDisplay = currCond.getString("humidity") + "%";
             tvHumidity.setText(humidityDisplay);
 
-            ivIcon.setImageResource(getResources().getIdentifier(icFile, "mipmap", requireContext().getPackageName()));
+            ivIcon.setImageResource(getResources().getIdentifier(icFile, "drawable", requireContext().getPackageName()));
 
             JSONObject tempJSON = hiLoInfo.getJSONObject("temp");
             String lowTempDisplay = Utils.getDisplayTemp(tempJSON.getDouble("min"), mUnits);
@@ -364,7 +364,7 @@ public class WeatherFragment extends Fragment {
                         .getJSONArray("weather")
                         .getJSONObject(0)
                         .getString("icon");
-                ivCurIcon.setImageResource(getResources().getIdentifier(icFile, "mipmap", requireContext().getPackageName()));
+                ivCurIcon.setImageResource(getResources().getIdentifier(icFile, "drawable", requireContext().getPackageName()));
 
                 String tempDisplay = Utils.getDisplayTemp(curHourData.getDouble("temp"), mUnits);
                 tempDisplay += getString(R.string.misc_temp_unit_symbol);
@@ -407,7 +407,7 @@ public class WeatherFragment extends Fragment {
                         .getJSONArray("weather")
                         .getJSONObject(0)
                         .getString("icon");
-                ivCurIcon.setImageResource(getResources().getIdentifier(icFile, "mipmap", requireContext().getPackageName()));
+                ivCurIcon.setImageResource(getResources().getIdentifier(icFile, "drawable", requireContext().getPackageName()));
 
                 String tempDisplay = Utils.getDisplayTemp(curDayData.getJSONObject("temp").getDouble("max"), mUnits);
                 tempDisplay += getString(R.string.misc_temp_unit_symbol);

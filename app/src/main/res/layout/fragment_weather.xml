@@ -5,30 +5,27 @@
     android:id="@+id/tv_weather_weatherHub"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="20dp"
-    android:paddingVertical="70dp"
     android:background="@drawable/weather_background"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="30dp"
     tools:context=".ui.weather.WeatherFragment">
 
     <LinearLayout
         android:id="@+id/layout_weather_upperLayout"
-        android:layout_width="0dp"
+        android:layout_width="371dp"
         android:layout_height="wrap_content"
 
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/layout_currentConditionsContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.49"
-        app:layout_constraintVertical_chainStyle="spread_inside">
+        app:layout_constraintTop_toBottomOf="@+id/layout_10DayContainer">
 
         <LinearLayout
             android:id="@+id/layout_weather_currentLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal" />
 
         <LinearLayout
             android:id="@+id/layout_weather_search"
@@ -105,15 +102,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_currentConditionsContainer"
-        android:layout_width="0dp"
+        android:layout_width="371dp"
         android:layout_height="wrap_content"
 
 
         app:layout_constraintBottom_toTopOf="@+id/layout_24HourContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_weather_upperLayout">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
@@ -171,20 +167,20 @@
                 android:paddingBottom="2dp">
 
                 <TextView
-                    android:textSize="15sp"
                     android:id="@+id/tv_weather_currentMinimum"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_weather_tempMin"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
-                    android:textSize="15sp"
                     android:id="@+id/tv_weather_currentMinimumDefault"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_weather_tempMinDefault"/>
+                    android:text="@string/tv_weather_tempMinDefault"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -206,12 +202,11 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
-                    android:textSize="15sp"
                     android:id="@+id/tv_weather_currentMaximumDefault"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_weather_tempMaxDefault"
-                  />
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -236,13 +231,12 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:textSize="15sp"
                     android:id="@+id/tv_weather_currentHumidityDefault"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/tv_weather_humidityDefault"
-               />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -257,23 +251,22 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:textSize="15sp"
                     android:id="@+id/tv_weather_currentSunrise"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_weather_sunrise"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:textSize="15sp"
                     android:id="@+id/tv_weather_currentSunriseDefault"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_weather_sunriseDefault"
-              />
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -285,23 +278,22 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:textSize="15sp"
                     android:id="@+id/tv_weather_currentSunset"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_weather_sunset"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:textSize="15sp"
                     android:id="@+id/tv_weather_currentSunsetDefault"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_weather_sunsetDefault"
-                 />
+                    android:textSize="15sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -316,6 +308,7 @@
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="italic"
+
             app:layout_constraintBottom_toTopOf="@+id/iv_weather_currentIcon"
             app:layout_constraintEnd_toEndOf="@+id/iv_weather_currentIcon"
             app:layout_constraintStart_toStartOf="@+id/iv_weather_currentIcon"
@@ -323,8 +316,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="64dp"
-            android:layout_height="52dp"
+            android:layout_width="142dp"
+            android:layout_height="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/iv_weather_currentIcon"
             app:layout_constraintStart_toStartOf="@+id/iv_weather_currentIcon">
@@ -1220,7 +1213,7 @@
         android:id="@+id/layout_10DayContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layout_weather_upperLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toStartOf="parent"
