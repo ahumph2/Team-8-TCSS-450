@@ -21,10 +21,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.IntFunction;
 
 import edu.uw.tcss450.tcss450group82022.R;
@@ -63,36 +65,45 @@ public class ContactListViewModel extends AndroidViewModel {
 
     /**
      * Add the contacts from JSONArray array to the mContactList
-     * @param array
+     * @param
      */
-    private void handleResult(final JSONArray array){
-        JSONObject response = null;
+    private void handleResult(final JSONObject response){
+        JSONObject root = response;
+        try{
+            if(root.has("contacts")){
+                JSONArray contactsArray = root.getJSONArray("contacts");
 
-        for (int i = 0; i < array.length(); i++) {
-            try{
-                response = array.getJSONObject(i);
-                ContactCard contactCard = new ContactCard(
-                        response.getString("Firstname"),
-                        response.getString("Lastname"),
-                        response.getString("Email"),
-                        response.getInt("MemberIdB")
-                );
-                if (!mContactList.getValue().contains(contactCard)){
-                    mContactList.getValue().add(contactCard);
-                } else {
-                    Log.wtf("Contact already exists", "Member ID already exists" + contactCard.getMemberID());
+                for(int i = 0; i < contactsArray.length(); i++){
+                    JSONObject contact = contactsArray.getJSONObject(i);
+                    ContactCard contactCard = new ContactCard(
+                            contact.getString("firstname"),
+                            contact.getString("lastname"),
+                            contact.getString("email"),
+                            contact.getInt("memberid")
+                    );
+                    if (!mContactList.getValue().contains(contactCard)){
+                        mContactList.getValue().add(contactCard);
+                    } else
+                        Log.wtf("Contact already exists", "Member ID already exists" + contactCard.getMemberID());
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
+        } catch (JSONException e){
+            e.printStackTrace();
+            Log.e("ERROR!", e.getMessage());
         }
         mContactList.setValue(mContactList.getValue());
     }
 
-    public void getContacts(final String jwt) {
-        String url = getApplication().getResources().getString(R.string.base_url) + "contact";
+    public void getContacts(final String jwt, final String email) {
+        String url = getApplication().getResources().getString(R.string.base_url) + "contacts/"+email;
 
-        Request request = new JsonArrayRequest(
+        JSONObject body = new JSONObject();
+        try {
+            body.put("email", email);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
                 null,
@@ -117,22 +128,20 @@ public class ContactListViewModel extends AndroidViewModel {
     }
 
     //add contacts - POST
-    public void addContact(final String jwt, final Editable email) {
-        String url = getApplication().getResources().getString(R.string.base_url) + "contact";
-
+    public void addContact(final String jwt, final String myEmail,final String userEmail) {
+        String url = getApplication().getResources().getString(R.string.base_url) + "contacts/" + userEmail;
         JSONObject body = new JSONObject();
         try {
-            body.put("email", email);
+            body.put("myEmail", myEmail);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         Request request = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
                 body,
                 mResponse::setValue,
-                this::handleError) {
+                this::handlePostError) {
             @Override
             public Map<String, String> getHeaders(){
                 Map<String, String> headers = new HashMap<>();
@@ -150,29 +159,6 @@ public class ContactListViewModel extends AndroidViewModel {
                 .add(request);
     }
 
-    //handle add contacts
-    private void handleAddContact(final JSONObject response) {
-
-        try{
-            JSONObject newContact = response.getJSONObject("newContact");
-            ContactCard contactCard = new ContactCard(
-                    response.getString("Firstname"),
-                    response.getString("Lastname"),
-                    response.getString("Email"),
-                    response.getInt("MemberIdB")
-            );
-
-            if (!mContactList.getValue().contains(contactCard)){
-                mContactList.getValue().add(contactCard);
-            } else {
-                Log.wtf("Contact already exists", "Member ID already exists" + contactCard.getMemberID());
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        mContactList.setValue(mContactList.getValue());
-    }
 
     //delete contacts
 
@@ -187,6 +173,30 @@ public class ContactListViewModel extends AndroidViewModel {
         //i.e. YOUR PROJECT
         Log.e("CONNECTION ERROR", error.getLocalizedMessage());
         throw new IllegalStateException(error.getMessage());
+    }
+
+    private void handlePostError(final VolleyError error){
+        if (Objects.isNull(error.networkResponse)) {
+            try {
+                mResponse.setValue(new JSONObject("{" +
+                        "error:\"" + error.getMessage() +
+                        "\"}"));
+            } catch (JSONException e) {
+                Log.e("JSON PARSE", "JSON Parse Error in handleError");
+            }
+        }
+        else {
+            String data = new String(error.networkResponse.data, Charset.defaultCharset())
+                    .replace('\"', '\'');
+            try {
+                JSONObject response = new JSONObject();
+                response.put("code", error.networkResponse.statusCode);
+                response.put("data", new JSONObject(data));
+                mResponse.setValue(response);
+            } catch (JSONException e) {
+                Log.e("JSON PARSE", "JSON Parse Error in handleError");
+            }
+        }
     }
 
 }

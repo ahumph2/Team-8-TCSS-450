@@ -247,24 +247,26 @@ public class ChatViewModel extends AndroidViewModel {
         IntFunction<String> getString =
                 getApplication().getResources()::getString;
         try {
+            Log.e("GET", "Result: " +result.toString());
             JSONObject root = result;
             // Collect User emails
             if (root.has(getString.apply(R.string.keys_json_chats_rows))) {
                 JSONArray chatIdEmail = root.getJSONArray(
                         getString.apply(R.string.keys_json_chats_rows));
+                Log.e("GET", "ChatIdArray: " + chatIdEmail);
                 for(int i = 0; i < chatIdEmail.length(); i++) {
                     JSONObject jsonChatEmail = chatIdEmail.getJSONObject(i);
-                    /**
-                    ContactCard contactCard = new ContactCard.Builder(
-                            jsonChatEmail.getString(
-                                    getString.apply(
-                                            R.string.keys_json_chats_email)))
-                            .build();
+                    ContactCard contactCard = new ContactCard(
+                            "",
+                            "",
+                            jsonChatEmail.getString("email"),
+                            i
+                    );
 
                     if (!mUserList.getValue().contains(contactCard)) {
+                        Log.e("GET", "Adding a card");
                         mUserList.getValue().add(contactCard);
                     }
-                    */
                 }
             } else {
                 Log.e("ERROR!", "No data array");

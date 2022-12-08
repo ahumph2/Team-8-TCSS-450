@@ -170,6 +170,7 @@ public class ChatFragment extends Fragment {
                         mSendModel.sendMessage(mChatId,
                                 mUserModel.getmJwt(),
                                 "Welcome to the chat!");
+                        mChatModel.connectGetUserList(mUserModel.getmJwt(),mArgs.getChat().getChatId());
                     } else
                         Log.e("POST Response", "Post response failed");
                 } catch (JSONException e) {

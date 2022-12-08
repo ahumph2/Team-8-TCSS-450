@@ -76,7 +76,7 @@ public class UserListRecyclerViewAdapter extends RecyclerView.Adapter<UserListRe
                         ContactListFragmentDirections
                                 .actionNavigationContactListToNavigationContact(contactCard));
             });
-           // binding.contactName.setText(contactCard.getContactName());
+            binding.contactName.setText(contactCard.getmContactEmail());
             /*
             binding.buttonDeleteChatroom.setOnClickListener(view ->{
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mView.getContext());
