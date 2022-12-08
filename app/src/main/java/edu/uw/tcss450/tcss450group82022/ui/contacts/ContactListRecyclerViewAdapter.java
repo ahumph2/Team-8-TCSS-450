@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ import edu.uw.tcss450.tcss450group82022.databinding.FragmentContactCardBinding;
 public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<ContactListRecyclerViewAdapter.ContactViewHolder> {
     // Store all of the chat cards to present
     private final List<ContactCard> mContactCards;
+    private FragmentContactCardBinding binding;
 
     public ContactListRecyclerViewAdapter(List<ContactCard> items){
         this.mContactCards = items;
@@ -37,7 +40,20 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<Contact
 
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
-        holder.setContactCard(mContactCards.get(position));
+        ContactCard modal = mContactCards.get(position);
+
+        holder.contactName.setText(modal.getContactFullName());
+        /**
+        holder.contactDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(
+                        ContactListFragmentDirections.actionNavigationContactListToNavigationContact(
+                                modal.getContactFullName(), modal.getmContactEmail())
+                );
+            }
+        });
+         */
     }
 
     @Override
@@ -50,24 +66,13 @@ public class ContactListRecyclerViewAdapter extends RecyclerView.Adapter<Contact
      * of rows in the Blog Recycler View.
      */
     public class ContactViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public FragmentContactCardBinding binding;
-        private ContactCard mContactCard;
+        private final TextView contactName;
+        private ImageButton contactDelete;
+
         public ContactViewHolder(View view) {
             super(view);
-            mView = view;
-            binding = FragmentContactCardBinding.bind(view);
-        }
-
-        void setContactCard(final ContactCard contactCard) {
-            mContactCard = contactCard;
-            binding.buttonEnterContact.setOnClickListener(view -> {
-                //TODO add navigation later step
-                Navigation.findNavController(mView).navigate(
-                        ContactListFragmentDirections
-                                .actionNavigationContactListToNavigationContact(contactCard));
-            });
-            binding.contactName.setText(contactCard.getContactName());
+            contactName = view.findViewById(R.id.contact_name);
+            contactDelete = view.findViewById(R.id.contact_delete);
         }
     }
 }

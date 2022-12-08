@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import edu.uw.tcss450.tcss450group82022.R;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentChatBinding;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentContactBinding;
+import edu.uw.tcss450.tcss450group82022.databinding.FragmentContactListBinding;
 import edu.uw.tcss450.tcss450group82022.model.UserInfoViewModel;
 import edu.uw.tcss450.tcss450group82022.ui.chat.ChatFragmentArgs;
 
@@ -25,8 +26,10 @@ public class ContactFragment extends Fragment {
 
     private ContactViewModel mContactModel;
     private UserInfoViewModel mUserModel;
-    private ContactFragmentArgs mArgs;
+    private Bundle mArgs;
     private String mContactName;
+    private ContactListRecyclerViewAdapter contactListAdapter;
+    private FragmentContactListBinding mBinding;
 
     public ContactFragment() {
         // Required empty public constructor
@@ -38,15 +41,16 @@ public class ContactFragment extends Fragment {
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
         mContactModel = provider.get(ContactViewModel.class);
-        mArgs = ContactFragmentArgs.fromBundle(getArguments());
-        mContactName = mArgs.getContact().getContactName();
+        mContactModel.getFirst
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        mBinding = FragmentContactListBinding.inflate(inflater);
+        mArgs = getArguments();
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact, container, false);
+        return mBinding.getRoot();
     }
 
     @Override
