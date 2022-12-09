@@ -79,6 +79,9 @@
         <argument
             android:name="contact"
             app:argType="edu.uw.tcss450.tcss450group82022.ui.contacts.ContactCard" />
+        <action
+            android:id="@+id/action_navigation_contact_to_navigation_chats"
+            app:destination="@id/navigation_chats" />
     </fragment>
     <fragment
         android:id="@+id/navigation_contact_list"

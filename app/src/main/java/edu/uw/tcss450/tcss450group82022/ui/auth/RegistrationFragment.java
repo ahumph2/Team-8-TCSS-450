@@ -122,7 +122,8 @@ public class RegistrationFragment extends Fragment {
         mPassWordValidator.processResult(
                 mPassWordValidator.apply(binding.registrationEditTextPassword.getText().toString()),
                 this::verifyAuthWithServer,
-                result -> binding.registrationEditTextPassword.setError("Please enter a valid Password."));
+                result -> binding.registrationEditTextPassword.setError("Password must be at least 7 Characters long and contain: "+
+                        "1 uppercase, 1 lowercase letter, 1 special character and 1 digit"));
     }
 
     private void verifyAuthWithServer() {

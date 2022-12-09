@@ -1,5 +1,7 @@
 package edu.uw.tcss450.tcss450group82022.ui.contacts;
 
+import static edu.uw.tcss450.tcss450group82022.ui.contacts.ContactFragmentDirections.actionNavigationContactToNavigationChats;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.navigation.Navigation;
 
 import edu.uw.tcss450.tcss450group82022.R;
-import edu.uw.tcss450.tcss450group82022.databinding.FragmentChatBinding;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentContactBinding;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentContactListBinding;
 import edu.uw.tcss450.tcss450group82022.model.UserInfoViewModel;
-import edu.uw.tcss450.tcss450group82022.ui.chat.ChatFragmentArgs;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,5 +57,11 @@ public class ContactFragment extends Fragment {
 
         binding.contactNameEdittext.setText(mArgs.getContact().getContactFullName());
         binding.contactEmailEdittext.setText(mArgs.getContact().getmContactEmail());
+        //On button click, navigate to Third Home
+        binding.contactChatButton.setOnClickListener(button ->
+                Navigation.findNavController(requireView()).navigate(
+                        actionNavigationContactToNavigationChats()
+                        ));
+
     }
 }
