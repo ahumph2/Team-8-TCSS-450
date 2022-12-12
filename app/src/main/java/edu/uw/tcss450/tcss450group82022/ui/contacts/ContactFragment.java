@@ -27,6 +27,8 @@ import edu.uw.tcss450.tcss450group82022.R;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentContactBinding;
 import edu.uw.tcss450.tcss450group82022.databinding.FragmentContactListBinding;
 import edu.uw.tcss450.tcss450group82022.model.UserInfoViewModel;
+import edu.uw.tcss450.tcss450group82022.ui.chat.ChatCard;
+import edu.uw.tcss450.tcss450group82022.ui.chat.ChatListFragmentDirections;
 import edu.uw.tcss450.tcss450group82022.ui.chat.ChatListViewModel;
 import edu.uw.tcss450.tcss450group82022.ui.chat.ChatViewModel;
 
@@ -122,7 +124,7 @@ public class ContactFragment extends Fragment {
                     //try here
                     mChatModel.connectPostAddUser(mUserModel.getmJwt(), chatId, mArgs.getContact().getmContactEmail());
                     mChatModel.addPostResponseObserver(getViewLifecycleOwner(), response2 ->{
-                        observeAddUserResponse(response2, dialog, mArgs.getContact().getmContactEmail(),chatId);
+                        observeAddUserResponse(response2, dialog, nameText,chatId, nameText);
                     });
 
                 } catch (JSONException e) {
@@ -151,10 +153,6 @@ public class ContactFragment extends Fragment {
                 try {
                     if (response.get("success").equals(true)) {
                         Log.i("SUCCESS", "Success!");
-                        mModel.connectGet(mUserModel.getmJwt(), mUserModel.getEmail());
-
-
-
 
                     } else
                         Log.e("PUT Response", "Put response failed");
@@ -166,13 +164,19 @@ public class ContactFragment extends Fragment {
         }
     }
 
-    private void observeAddUserResponse(final JSONObject response, Dialog dialog, String emailText, String chatid) {
+    private void observeAddUserResponse(final JSONObject response, Dialog dialog, EditText emailText, String chatid, EditText nameText) {
         if (response.length() > 0) {
             if (response.has("success")) {
                 try {
                     if (response.get("success").equals(true)) {
                         Log.i("SUCCESS", "Success!");
                         dialog.dismiss();
+                        ChatCard tempCard = new ChatCard.Builder(chatid,nameText.getText().toString()).build();
+                        //TODO add navigation later step
+                        Navigation.findNavController(getView()).navigate(
+                                ContactFragmentDirections
+                                        .actionNavigationContactToChatFragment(tempCard));
+                        mModel.connectGet(mUserModel.getmJwt(), mUserModel.getEmail());
                         mChatModel.connectGetUserList(mUserModel.getmJwt(),chatid);
                     } else
                         Log.e("POST Response", "Post response failed");
@@ -180,13 +184,13 @@ public class ContactFragment extends Fragment {
                     Log.e("JSON Parse Error", e.getMessage());
                 }
             } else if (response.has("code")){
-                /*try {
+                try {
                     emailText.setError(
                             "Error Authenticating: " +
                                     response.getJSONObject("data").getString("message"));
                 } catch (JSONException e) {
                     Log.e("JSON Parse Error", e.getMessage());
-                }*/
+                }
             } else
                 Log.d("JSON Response", "No Response");
         }

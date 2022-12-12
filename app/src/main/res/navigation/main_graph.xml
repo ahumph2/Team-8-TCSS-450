@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_navigation_contact_to_navigation_chats"
             app:destination="@id/navigation_chats" />
+        <action
+            android:id="@+id/action_navigation_contact_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_contact_list"
