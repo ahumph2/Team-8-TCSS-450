@@ -14,11 +14,18 @@ public class ContactCard implements Serializable{
 
     private final String mContactEmail;
 
-    public ContactCard(String mContactFirstName, String mContactLastName, String mContactEmail, int memberID) {
+    // Means we are memberIdB, meaning we have a request, can respond
+    private boolean isMemberIdA;
+
+    private boolean pending;
+
+    public ContactCard(String mContactFirstName, String mContactLastName, String mContactEmail, int memberID, boolean pending, boolean isMemberIdA) {
         this.mContactFirstName = mContactFirstName;
         this.mContactLastName = mContactLastName;
         this.mContactEmail = mContactEmail;
         this.memberID = memberID;
+        this.pending = pending;
+        this.isMemberIdA = isMemberIdA;
     }
 
     public String getmContactFirstName() {
@@ -40,6 +47,12 @@ public class ContactCard implements Serializable{
     public int getMemberID(){
         return memberID;
     }
+
+
+    public boolean getIsMemberIdA() {return isMemberIdA;}
+
+
+    public boolean getPending() {return pending;}
 
     /**
      * Provides equality solely based on memberId.

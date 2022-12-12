@@ -46,7 +46,8 @@ public class ChatListRecyclerViewAdapter extends RecyclerView.Adapter<ChatListRe
         this.mChatCards = items;
         mModel = new ViewModelProvider(fragment.requireActivity()).get(ChatListViewModel.class);
         ViewModelProvider provider = new ViewModelProvider(fragment.requireActivity());
-        mUserModel = provider.get(UserInfoViewModel.class);
+        mUserModel = provider.get(
+                UserInfoViewModel.class);
         mChatListFragment = fragment;
     }
 

@@ -93,13 +93,11 @@ public class ContactFragment extends Fragment {
             // When the submit button is clicked
             submitButton.setOnClickListener(innerButton -> {
                 //  Make spinner appear
-                binding.layoutWait.setVisibility(View.VISIBLE);
                 // Using the text specified by user, call a post to chats with the new name
                 EditText nameText = newChatPopupView.findViewById(R.id.new_chat_name);
                 mModel.connectPost(mUserModel.getmJwt(), String.valueOf(nameText.getText()));
                 // Observe the response we get from the POST call
                 mModel.addPostResponseObserver(getViewLifecycleOwner(), response -> {
-                    binding.layoutWait.setVisibility(View.GONE);
                     observePostResponse(response, dialog, nameText);
                 });
             });

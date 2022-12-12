@@ -82,7 +82,7 @@ public class ContactListFragment extends Fragment {
             binding.layoutWait.setVisibility(View.GONE);
             if (!contactList.isEmpty()) {
                 binding.listRoot.setAdapter(
-                        new ContactListRecyclerViewAdapter(contactList)
+                        new ContactListRecyclerViewAdapter(contactList, this)
                 );
             }
         });

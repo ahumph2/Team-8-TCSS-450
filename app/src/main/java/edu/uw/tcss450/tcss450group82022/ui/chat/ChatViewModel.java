@@ -260,7 +260,9 @@ public class ChatViewModel extends AndroidViewModel {
                             "",
                             "",
                             jsonChatEmail.getString("email"),
-                            i
+                            i,
+                            false,
+                            false
                     );
 
                     if (!mUserList.getValue().contains(contactCard)) {

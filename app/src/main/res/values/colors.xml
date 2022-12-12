@@ -20,6 +20,9 @@
 
     <color name="secondaryTextColorFade">#222222</color>
 
+    <color name="acceptGreen">#1ecf15</color>
+    <color name="rejectRed">#cf1515</color>
+
     <color name="headerColor">#041f49</color>
 
 

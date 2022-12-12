@@ -73,7 +73,6 @@ public class ChatFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         FragmentChatBinding binding = FragmentChatBinding.bind(getView());
         binding.textChatName.setText(mArgs.getChat().getChatName());
 
