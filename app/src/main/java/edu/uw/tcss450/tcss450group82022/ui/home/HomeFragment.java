@@ -70,9 +70,12 @@ public class HomeFragment extends Fragment {
 
         binding.textCurrentMessageCount.setText(getString(R.string.label_home_message_notification, String.valueOf(mMessageCount)));
         //On button click, navigate to Second Home
+        /*
         binding.buttonNext.setOnClickListener(button ->
                 Navigation.findNavController(requireView()).navigate(
                         HomeFragmentDirections
                                 .actionHomeFragmentToSecondHomeFragment()));
+
+         */
     }
 }

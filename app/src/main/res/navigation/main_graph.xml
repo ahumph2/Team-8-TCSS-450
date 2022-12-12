@@ -9,25 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="edu.uw.tcss450.tcss450group82022.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_secondHomeFragment"
-            app:destination="@id/secondHomeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/secondHomeFragment"
-        android:name="edu.uw.tcss450.tcss450group82022.ui.home.SecondHomeFragment"
-        android:label="@string/title_second_home"
-        tools:layout="@layout/fragment_second_home">
-        <action
-            android:id="@+id/action_secondHomeFragment_to_thirdHomeFragment"
-            app:destination="@id/thirdHomeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/thirdHomeFragment"
-        android:name="edu.uw.tcss450.tcss450group82022.ui.home.ThirdHomeFragment"
-        android:label="@string/title_third_home"
-        tools:layout="@layout/fragment_third_home" />
+        tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/navigation_incrementor"
         android:name="edu.uw.tcss450.tcss450group82022.ui.incrementor.IncrementorFragment"

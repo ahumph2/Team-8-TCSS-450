@@ -48,10 +48,12 @@ public class SecondHomeFragment extends Fragment {
         binding.textEmail.setText(getString(R.string.label_second_home, model.getEmail()));
 
         //On button click, navigate to Third Home
-        binding.buttonNext.setOnClickListener(button ->
+
+       /** binding.buttonNext.setOnClickListener(button ->
                 Navigation.findNavController(requireView()).navigate(
                         SecondHomeFragmentDirections
                                 .actionSecondHomeFragmentToThirdHomeFragment())
-        );
+
+        );*/
     }
 }
